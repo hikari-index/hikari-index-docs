@@ -11,7 +11,7 @@ frames that stand for it, describes each one, and serves them from a
 gallery on your own network. Your video is never changed, scanned as a
 whole, or sent anywhere.</p>
 
-![The Explore page of a gallery holding three Blender Studio films](/shots/explore.avif "Explore, the front page. Frames from Big Buck Bunny, Charge and Hero, (CC) Blender Foundation | studio.blender.org.")
+![The Explore page of a gallery holding five Blender Studio films](/shots/explore.avif "Explore, the front page. Frames from Blender Studio open films, (CC) Blender Foundation | studio.blender.org.")
 
 Each still can carry:
 

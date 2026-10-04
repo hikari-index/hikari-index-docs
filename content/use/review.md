@@ -42,7 +42,7 @@ minute, and a browser that already loaded one keeps its copy.
 is, with counts at every level (picked, to review, culled, hidden,
 corrected) and a bar for how much is reviewed.
 
-![The Review page: the library as a tree with counts](/shots/review.avif "Review, with the three films half done.")
+![The Review page: the library as a tree with counts](/shots/review.avif "Review, part way through the films in these screenshots.")
 
 - **needs a look first** puts anything with stills to review at the top,
   newest first; **a–z** sorts by title. The box filters by title or

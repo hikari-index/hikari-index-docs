@@ -66,8 +66,8 @@ Every way in asks for a still count:
 
 - **Fewer**: about 60% of balanced.
 - **Balanced**: worked out from the number of shots. A 24-minute episode
-  gets a few dozen; the three short films in these screenshots got 35
-  each.
+  gets a few dozen; the short films in these screenshots got between 23
+  and 35.
 - **More**: about 150% of balanced, at most 300 (plus any frames you
   [lock](pool.md), which are always kept).
 

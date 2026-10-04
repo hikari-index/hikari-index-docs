@@ -46,6 +46,13 @@ is not, in words, and it has the buttons that fix most things.
   replace three lines in `.env` with the new ones: `HIKARI_ADMIN_USER`,
   `HIKARI_ADMIN_PASSWORD_HASH` and `HIKARI_SESSION_SECRET`. Keep the
   database password line as it is. Then `docker compose up -d gallery`.
+- **"unsupported source color metadata; refusing to guess"**: the
+  video's color tags are only partly set, for example a color matrix
+  but no transfer or primaries. The tool converts color by the file's own
+  tags and treats only a file with no tags at all as ordinary HD video;
+  it will not guess for a half-tagged one. This is not damage, and there
+  is no setting to override it. (The Blender film Sintel, as Blender
+  publishes it at 720p, is one such file.)
 - **Worker hours seem off by some hours:** `HIKARI_WORKER_HOURS` is read
   on the container's clock, which is UTC.
 

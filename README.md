@@ -61,3 +61,10 @@ The look is the gallery's: `src/app.css` carries the gallery's tokens
 (`gallery/src/app.css` in the tool repository) and the same IBM Plex
 files (SIL Open Font License, `src/fonts/LICENSE-IBM-Plex.txt`). Keep the
 two in step.
+
+## License
+
+The docs' text is licensed under [Creative Commons Attribution 4.0](LICENSE).
+Frames in the screenshots are from Blender Studio's open films, (CC)
+Blender Foundation, under their own CC BY licenses (see the Credits
+page). IBM Plex is under the SIL Open Font License.

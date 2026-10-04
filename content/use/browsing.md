@@ -16,8 +16,8 @@ This page covers browsing; [Searching](search.md) covers Explore.
 
 Everything in the gallery, grouped the way Shoko groups it: a title, its
 seasons, their episodes, in order. A work added by path is grouped by the
-title you typed, and under the wider title you gave it, if any (all three
-films here are filed under "Blender Studio").
+title you typed, and under the wider title you gave it, if any (the films
+here are all filed under "Blender Studio").
 
 Open an episode or a film to get its **sheet**: every still in time
 order, numbered, with its timestamp, its palette strip and its main

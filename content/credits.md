@@ -20,6 +20,10 @@ inside the gallery's own pages.
   [studio.blender.org](https://studio.blender.org/projects/charge/).
 - **Hero** (2018), the Grease Pencil showcase. (CC) Blender Foundation |
   [studio.blender.org](https://studio.blender.org/projects/hero/).
+- **Caminandes: Gran Dillama** (2013). (CC) Blender Foundation |
+  [studio.blender.org](https://studio.blender.org/projects/caminandes-2/).
+- **Tears of Steel** (2012). (CC) Blender Foundation |
+  [studio.blender.org](https://studio.blender.org/projects/tears-of-steel/).
 
 Blender Studio makes these films in the open and releases them for
 anyone to reuse. If you need test material for your own install, they
