@@ -90,8 +90,10 @@ function render(slug) {
       paragraph({ tokens }) {
         const only = tokens.filter((t) => !(t.type === "text" && !t.text.trim()));
         if (only.length === 1 && only[0].type === "image") {
-          // Linked to itself, so a reader can open the full-size screenshot.
-          const img = `<a href="${escapeHtml(only[0].href.startsWith("/") ? `${base}${only[0].href}` : only[0].href)}" title="Open full size">${this.parser.parseInline(only)}</a>`;
+          // Linked to itself, so a reader can open the full-size screenshot;
+          // data-sveltekit-reload keeps the client router from treating the
+          // image as a page (it answered 404).
+          const img = `<a href="${escapeHtml(only[0].href.startsWith("/") ? `${base}${only[0].href}` : only[0].href)}" title="Open full size" target="_blank" rel="noopener" data-sveltekit-reload>${this.parser.parseInline(only)}</a>`;
           const cap = only[0].title ? `<figcaption>${marked.parseInline(only[0].title)}</figcaption>` : "";
           return `<figure>${img}${cap}</figure>\n`;
         }
