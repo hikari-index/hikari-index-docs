@@ -15,10 +15,11 @@ them all on one machine, the one that has your video.
   FFmpeg build. Linux, or Docker Desktop on Windows.
 - **Your video**, on that machine or mounted there. It is mounted
   read-only into one container and nothing writes to it.
-- **Internet for the build and the first start.** The build downloads
-  base images, Python and Node packages, FFmpeg and the model weights; the
-  first start pulls the database image. After that nothing is
-  downloaded, and nothing is ever uploaded.
+- **Internet to install and update.** Installing downloads the published
+  images from the GitHub Container Registry (the models are inside them);
+  a GPU worker, built on your machine, also downloads its base and model
+  weights. While it runs, nothing is downloaded, and nothing is ever
+  uploaded.
 
 Most of the testing so far is on Docker Desktop for Windows. The gallery,
 its database and the worker that reads video also run on a Linux NAS

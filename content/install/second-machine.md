@@ -34,11 +34,11 @@ you restart, keeping the owner. With everything stopped
 into (`docker volume ls` shows it):
 
 ```bash
-docker run --rm --entrypoint cp -v hikari-index_hikari-data:/from:ro -v /path/to/hikari/data:/to hikari-index/worker:local -a /from/runs /to/
+docker run --rm --entrypoint cp -v hikari-index_hikari-data:/from:ro -v /path/to/hikari/data:/to ghcr.io/hikari-index/worker:latest -a /from/runs /to/
 ```
 
-The image name ends in `:local`. If you set `HIKARI_VERSION` in `.env`,
-use that instead (`hikari-index/worker:<your version>`).
+The image is the worker your install already pulled. If you set
+`HIKARI_VERSION` in `.env`, use that tag instead of `latest`.
 
 Then start everything again with `docker compose up -d`; step 2 needs
 the gallery running.
@@ -103,9 +103,11 @@ the same commit is the case that has been tested.
   `http://192.0.2.10:5183`. Not `localhost`.
 - `HIKARI_WORKER_ID` and `HIKARI_WORKER_TOKEN`: the name and token from
   step 2.
-- `HIKARI_WORKER_VERSION`: any label, for example `rtx-worker-local`. It
-  is baked into the image at build time and printed at the top of the
-  worker's log, so set it before step 7.
+- For a CPU worker, `HIKARI_VERSION`: the same as the main machine's
+  (leave it out for `latest`).
+- For a GPU worker, `HIKARI_WORKER_VERSION`: any label, for example
+  `rtx-worker-local`. It is baked into the image at build time and
+  printed at the top of the worker's log, so set it before step 7.
 
 The CPU example file sets `HIKARI_WORKER_STANDBY=1`: that worker is meant
 as the fallback for a GPU machine that is sometimes off. If this CPU
@@ -113,8 +115,14 @@ machine is meant to do the analyzing, delete that line. With both
 workers on standby, neither counts as the regular one, so both take
 stages as they come, which is the thing step 3 was meant to prevent.
 
-**7. Build.** For a GPU worker, first the base it is built on (large,
-once; a CPU worker skips this):
+**7. Get the worker.** A CPU worker is published; pull it:
+
+```bash
+docker compose --env-file .env.cpu-worker -f compose.cpu-worker.yaml pull
+```
+
+A GPU worker is built here. First the base it is built on (large,
+once):
 
 ```bash
 docker build -f containers/inference/Dockerfile -t hikari-index/inference:inference-d1f2552-20261002.1 .

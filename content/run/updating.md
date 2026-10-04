@@ -34,20 +34,32 @@ git pull
 ```
 
 ```bash
-docker compose build
+docker compose pull
 ```
 
 ```bash
 docker compose up -d
 ```
 
+`git pull` brings the compose file and settings examples up to date;
+`docker compose pull` fetches the images for your `HIKARI_VERSION`
+(`latest` unless you set it). With `HIKARI_VERSION` set to a release
+number, change it to the new release first. If you build your images
+from the source, run `docker compose build` instead of `docker compose
+pull`.
+
 The gallery applies any database changes itself when it starts. Runs
 already on disk stay readable by newer versions.
 
-With the GPU analyze worker: its base is not rebuilt by `docker compose
-build`. Rebuild it only when the update touched it: if the list of
-changed files that `git pull` prints includes anything under
-`containers/inference/`, run this before `docker compose build`:
+With the GPU analyze worker, rebuild it after `git pull`:
+
+```bash
+docker compose build analyze-gpu
+```
+
+Its base is not rebuilt by that. Rebuild the base only when the update
+touched it: if the list of changed files that `git pull` prints includes
+anything under `containers/inference/`, run this first:
 
 ```bash
 docker compose build inference-base

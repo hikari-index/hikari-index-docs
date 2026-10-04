@@ -50,21 +50,33 @@ COMPOSE_PROFILES=gpu
 Everything else in the file is optional and explained there and on the
 [settings page](../reference/settings.md).
 
-## 3. Build
+## 3. Get the images
 
-With the GPU analyze worker (`COMPOSE_PROFILES=gpu`), first build the
-base it sits on. It holds CUDA and about 5 GB of model weights, takes a
-while, and you do it once:
+The images are published, so this is a download (about 12 GB):
+
+```bash
+docker compose pull
+```
+
+With the GPU analyze worker (`COMPOSE_PROFILES=gpu`) there is one more
+step, because that worker is not published: build it here. The first
+command builds the base it sits on, which holds CUDA and about 5 GB of
+model weights; it takes a while and you do it once.
 
 ```bash
 docker compose build inference-base
 ```
 
-Then everything (the only step for a CPU install):
-
 ```bash
-docker compose build
+docker compose build analyze-gpu
 ```
+
+`HIKARI_VERSION` in `.env` picks which published version you run:
+`latest` (the default), a release number such as `1.0.0` to stay on it,
+or `dev` for the newest build. To build every image from the source
+instead of pulling, run `docker compose build`; the
+[repository](https://github.com/hikari-index/hikari-index/blob/main/docs/BUILDING.md)
+has the details.
 
 ## 4. Make the secrets
 

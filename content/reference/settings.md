@@ -33,7 +33,7 @@ whose settings changed.
 | `HIKARI_WORKER_HOURS` | Start the worker's stages (extraction, web images, deletions) only between these hours, for example `01-07`. A stage already running finishes. The hours are the container's clock, which is UTC. Empty means any time. |
 | `HIKARI_POLL_SECONDS` | How often an idle worker asks for work. Default `30`. |
 | `HIKARI_ADMIN_LINK` | `0` hides the **Admin** link in the header. It hides the link only; `/admin` still answers. Default `1`. |
-| `HIKARI_VERSION` | The tag the built images get, and the version the gallery and workers print in their logs. Baked in at build time: change it, then `docker compose build`. Default `local`. |
+| `HIKARI_VERSION` | Which published images to run: `latest` (the default, the newest release), a release number such as `1.0.0` to stay on it, or `dev` for the newest build of the main branch. Set it, then `docker compose pull`. |
 
 ## Made for you by the first-run step
 
@@ -61,9 +61,10 @@ set.
 | `HIKARI_GALLERY_URL` | The main machine's gallery, by address and port. |
 | `HIKARI_WORKER_ID` | This worker's name on Jobs. Must match its pair in the main machine's `HIKARI_WORKER_TOKENS`. |
 | `HIKARI_WORKER_TOKEN` | Its token, the other half of that pair. |
-| `HIKARI_WORKER_VERSION` | The image's tag and the version printed in its log. Set before building. |
+| `HIKARI_VERSION` | CPU worker: the published version to pull, the same as the main machine's. Default `latest`. |
+| `HIKARI_WORKER_VERSION` | GPU worker: the image's tag and the version printed in its log. Set before building. |
 | `HIKARI_WORKER_STANDBY` | `1` makes it a fallback (CPU example only; see [the second-machine page](../install/second-machine.md)). |
-| `HIKARI_IMAGE_REPOSITORY` | CPU only: pull the image from a registry of yours instead of building it. |
+| `HIKARI_IMAGE_REPOSITORY` | CPU only: pull from a registry of yours instead of ghcr.io. |
 
 ## HTTPS through a reverse proxy
 
