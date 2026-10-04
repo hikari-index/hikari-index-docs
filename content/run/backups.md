@@ -45,8 +45,9 @@ user id 10001.
 
 If you leave them as Docker volumes, they are named after the folder you
 cloned into (for example `hikari-index_hikari-data`; `docker volume ls`
-shows them). Copy a volume's contents out to a backup folder with the
-worker image, which is already on the machine; it runs as root here so
+shows them). Once the writers are stopped ([Taking a matching
+set](#taking-a-matching-set), below), copy a volume's contents out to a
+backup folder with the worker image, which is already on the machine; it runs as root here so
 that the copy keeps the files' owner, user id 10001:
 
 ```bash

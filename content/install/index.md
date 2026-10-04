@@ -135,7 +135,7 @@ Jobs page says.
 
 ## Next
 
-- [Connect Shoko](shoko.md), if you use it.
+- [Connect Shoko](shoko.md), if you skipped step 6.
 - [Adding work](../use/adding.md) and [reviewing](../use/review.md).
 - [Backups](../run/backups.md): worth setting up before you have hours of
   review in the database.

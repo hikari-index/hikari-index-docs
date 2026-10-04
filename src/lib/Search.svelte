@@ -67,8 +67,8 @@
       e.preventDefault();
       (i > 0 ? links[i - 1] : box.querySelector("input")).focus();
     } else if (e.key === "Escape") {
-      open = false;
-      box.querySelector("input").focus();
+      box.querySelector("input").focus(); // its focus handler opens the panel,
+      open = false; // so close after it
     }
   }
   let box;

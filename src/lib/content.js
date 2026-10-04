@@ -35,6 +35,16 @@ const idOf = (text) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
+// Heading HTML to plain text for the contents list (Svelte escapes it again).
+const plain = (html) =>
+  html
+    .replace(/<[^>]+>/g, "")
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+
 const pages = new Map();
 for (const [path, raw] of Object.entries(files)) {
   const { meta, body } = frontMatter(raw);
@@ -67,7 +77,7 @@ function render(slug) {
         let id = idOf(text) || "section";
         while (used.has(id)) id += "-";
         used.add(id);
-        if (depth === 2) toc.push({ id, text: inner.replace(/<[^>]+>/g, "") });
+        if (depth === 2) toc.push({ id, text: plain(inner) });
         return `<h${depth} id="${id}">${inner}<a class="anchor" href="#${id}" aria-label="Link to this section" data-pagefind-ignore>#</a></h${depth}>\n`;
       },
       link({ href, title, tokens }) {

@@ -92,7 +92,7 @@
   --s-7: 48px;
 
   --gutter: 24px;
-  --measure: 72ch; /* a line of running text */
+  --measure: 720px; /* a line of running text; code blocks share it (px, not ch: ch follows each element's own font) */
   --column: 920px; /* the page body: tables, figures and code use all of it */
 }
 
@@ -165,6 +165,7 @@ input {
 .prose > ul,
 .prose > ol,
 .prose > blockquote,
+.prose > pre,
 .prose > h1,
 .prose li {
   max-width: var(--measure);
@@ -235,13 +236,17 @@ input {
 }
 .prose pre {
   position: relative;
+  box-sizing: border-box; /* the same outer width as the text */
   margin: 0 0 var(--s-4);
   padding: var(--s-3) var(--s-4);
   background: var(--bg-1);
   border: 1px solid var(--line-1);
-  overflow-x: auto;
   font-size: var(--t-ui);
   line-height: 1.55;
+  /* long commands wrap instead of scrolling sideways; copy takes the
+     command as written */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .prose pre code {
   color: var(--text-1);

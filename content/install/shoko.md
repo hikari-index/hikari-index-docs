@@ -10,7 +10,8 @@ manager. It identifies your files against AniDB and keeps series,
 episodes and files in order, and Hikari Index is built to use all of
 that. With Shoko connected, the Onboard page lets you search your series
 and pick episodes or a whole season from a list, and the Library groups
-works the way Shoko does. If you do not run Shoko yet, its
+titles the way you are used to: each series sits under its top-level
+Shoko group, with that group's name. If you do not run Shoko yet, its
 [docs](https://docs.shokoanime.com/) cover setting it up; this page
 assumes you already have it.
 
