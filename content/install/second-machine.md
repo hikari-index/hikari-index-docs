@@ -37,6 +37,9 @@ into (`docker volume ls` shows it):
 docker run --rm --entrypoint cp -v hikari-index_hikari-data:/from:ro -v /path/to/hikari/data:/to hikari-index/worker:local -a /from/runs /to/
 ```
 
+The image name ends in `:local`. If you set `HIKARI_VERSION` in `.env`,
+use that instead (`hikari-index/worker:<your version>`).
+
 Then start everything again with `docker compose up -d`; step 2 needs
 the gallery running.
 

@@ -58,6 +58,9 @@ docker run --rm --user 0 --entrypoint cp -v hikari-index_hikari-data:/from:ro -v
 docker run --rm --user 0 --entrypoint cp -v hikari-index_hikari-images:/from:ro -v /backup/hikari-images:/to hikari-index/worker:local -a /from/. /to/
 ```
 
+The image name ends in `:local`. If you set `HIKARI_VERSION` in `.env`,
+use that instead (`hikari-index/worker:<your version>`).
+
 To put one back, swap the two `-v` sources: the backup folder as
 `/from:ro`, the volume as `/to`. These commands were tested on Docker
 Desktop for Windows, both ways, into a fresh volume.

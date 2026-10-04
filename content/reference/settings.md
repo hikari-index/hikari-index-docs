@@ -15,7 +15,7 @@ whose settings changed.
 |---|---|
 | `HIKARI_VIDEO` | The folder your video is in. Mounted read-only at `/source` in the worker that reads video, and nowhere else. Required. |
 | `HIKARI_ORIGIN` | The address you open the gallery at, exactly as the browser shows it, for example `http://192.0.2.10:5183`. The sign-in form refuses anything sent from another address. Default `http://localhost:5183`. |
-| `COMPOSE_PROFILES` | Which analyze worker runs on this machine: `gpu`, `cpu`, or empty for none (when it runs on [a second machine](../install/second-machine.md)). |
+| `COMPOSE_PROFILES` | Which analyze worker runs on this machine: `gpu`, `cpu`, or empty for none (when it runs on [a second machine](../install/second-machine.md)). Emptying it does not stop a worker that is already running: `docker compose rm -sf analyze-cpu` (or `analyze-gpu`) first. |
 
 ## Optional
 

@@ -23,9 +23,16 @@ docker compose up -d
 ```
 
 The gallery applies any database changes itself when it starts. Runs
-already on disk stay readable by newer versions. Rebuild the model base
-(`docker compose build inference-base`) only when the release notes say
-the models changed.
+already on disk stay readable by newer versions.
+
+The model base is not rebuilt by `docker compose build`. Rebuild it only
+when the update touched it: if the list of changed files that `git pull`
+prints includes anything under `containers/inference/`, run this before
+`docker compose build`:
+
+```bash
+docker compose build inference-base
+```
 
 If you run an analyze worker on [a second machine](../install/second-machine.md),
 update it to the same commit and rebuild it as well.
