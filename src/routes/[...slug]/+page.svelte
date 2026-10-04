@@ -1,5 +1,6 @@
 <script>
   import { hrefOf, title } from "$lib/content.js";
+  import Lightbox from "$lib/Lightbox.svelte";
   let { data } = $props();
   const page = $derived(data.page);
   let article = $state();
@@ -49,6 +50,7 @@
     <article class="prose" data-pagefind-body bind:this={article}>
       {@html page.html}
     </article>
+    <Lightbox root={article} />
 
     <nav class="pager" aria-label="Previous and next page">
       {#if data.prev !== null}
