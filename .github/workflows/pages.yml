@@ -27,11 +27,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # The project-page address. Set to "" once the site has its own
-      # domain (and add static/CNAME).
+      # The site has its own domain (docs.hikari-index.moe, set in the
+      # repository's Pages settings), so it is served from the root. A
+      # project-page address would need BASE_PATH: /hikari-index-docs.
       - run: npm run build
         env:
-          BASE_PATH: /hikari-index-docs
+          BASE_PATH: ""
       - uses: actions/upload-pages-artifact@v4
         with:
           path: build

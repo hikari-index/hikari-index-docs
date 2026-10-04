@@ -2,7 +2,7 @@
 
 The user documentation for [Hikari Index](https://github.com/hikari-index/hikari-index):
 installing, connecting Shoko, using the gallery, and keeping it running.
-Published at https://hikari-index.github.io/hikari-index-docs/.
+Published at https://docs.hikari-index.moe/.
 
 ## Writing
 
@@ -32,8 +32,8 @@ npm run serve    # builds, then serves build/ at http://localhost:5291 with sear
 ```
 
 `npm run build` writes the static site to `build/`. Set `BASE_PATH` to
-serve it below a path (`/hikari-index-docs` on GitHub Pages); leave it
-empty for a site with its own domain.
+serve it below a path (`/hikari-index-docs` for a GitHub project page);
+it is empty for the published site, which has its own domain.
 
 ## Screenshots
 
