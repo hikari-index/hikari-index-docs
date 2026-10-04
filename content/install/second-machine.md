@@ -113,8 +113,8 @@ machine is meant to do the analyzing, delete that line. With both
 workers on standby, neither counts as the regular one, so both take
 stages as they come, which is the thing step 3 was meant to prevent.
 
-**7. Build.** First the model base, which both kinds of worker are built
-from (large, once):
+**7. Build.** For a GPU worker, first the base it is built on (large,
+once; a CPU worker skips this):
 
 ```bash
 docker build -f containers/inference/Dockerfile -t hikari-index/inference:inference-d1f2552-20261002.1 .

@@ -52,14 +52,15 @@ Everything else in the file is optional and explained there and on the
 
 ## 3. Build
 
-The first command builds the model base. It downloads about 5 GB of
-model weights and takes a while; you do it once.
+With the GPU analyze worker (`COMPOSE_PROFILES=gpu`), first build the
+base it sits on. It holds CUDA and about 5 GB of model weights, takes a
+while, and you do it once:
 
 ```bash
 docker compose build inference-base
 ```
 
-Then the rest:
+Then everything (the only step for a CPU install):
 
 ```bash
 docker compose build

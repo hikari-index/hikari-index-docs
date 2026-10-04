@@ -5,6 +5,25 @@ description: Update an install to a newer version, or stop and remove it.
 
 # Updating and removing
 
+## Version numbers
+
+Releases are numbered `MAJOR.MINOR.PATCH`, and each number says what an
+update asks of you:
+
+- **MAJOR** (`2.0.0`): you have to do something, such as change a
+  setting, edit the compose file or your container template, rebuild
+  something, or update a worker on another machine at the same time. The
+  release notes open with exactly what.
+- **MINOR** (`1.5.0`): something new or different, and nothing for you to
+  do. If it changes the database in a way that stops you rolling back,
+  the notes say so.
+- **PATCH** (`1.5.1`): fixes only.
+
+Every part (gallery, workers, text encoder) carries the same number; run
+the same version everywhere. Notes for each release are on the
+[Releases page](https://github.com/hikari-index/hikari-index/releases),
+which starts every entry with **Action needed**.
+
 ## Updating
 
 Take a [backup](backups.md) first if you have review work you care
@@ -25,10 +44,10 @@ docker compose up -d
 The gallery applies any database changes itself when it starts. Runs
 already on disk stay readable by newer versions.
 
-The model base is not rebuilt by `docker compose build`. Rebuild it only
-when the update touched it: if the list of changed files that `git pull`
-prints includes anything under `containers/inference/`, run this before
-`docker compose build`:
+With the GPU analyze worker: its base is not rebuilt by `docker compose
+build`. Rebuild it only when the update touched it: if the list of
+changed files that `git pull` prints includes anything under
+`containers/inference/`, run this before `docker compose build`:
 
 ```bash
 docker compose build inference-base
