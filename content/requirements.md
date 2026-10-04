@@ -55,12 +55,11 @@ problem.
 
 ## Disk
 
-**For the images, about 30 GB.** Most of it is the model base, about
-18 GB, which every analyze worker is built from. The GPU worker sits on
-top of it and adds little. The CPU worker is a separate 6 GB image that
-copies the model files out of the base, so a CPU-only install still
-builds the 18 GB base first, and keeps needing it: every update rebuilds
-the CPU worker from it, so leave the base image in place.
+**For the images: about 12 GB with the CPU analyze worker, about 24 GB
+with the GPU one**, measured on the built images, plus room for the build
+itself. The GPU worker is built on an 18 GB base that holds CUDA and the
+models; keep that base, because updates rebuild the GPU worker from it.
+The CPU worker is a 6 GB image of its own and never needs the base.
 
 **For the library**, measured on one 24-minute 1080p episode:
 
