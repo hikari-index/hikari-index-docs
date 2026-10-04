@@ -33,6 +33,7 @@ whose settings changed.
 | `HIKARI_WORKER_HOURS` | Start the worker's stages (extraction, web images, deletions) only between these hours, for example `01-07`. A stage already running finishes. The hours are the container's clock, which is UTC. Empty means any time. |
 | `HIKARI_POLL_SECONDS` | How often an idle worker asks for work. Default `30`. |
 | `HIKARI_ADMIN_LINK` | `0` hides the **Admin** link in the header. It hides the link only; `/admin` still answers. Default `1`. |
+| `HIKARI_NOTICE` | A line of your own text at the foot of every page, for example the credits for openly licensed video you add. Plain text; web addresses in it become links. Unset, there is no footer. |
 | `HIKARI_VERSION` | Which published images to run: `latest` (the default, the newest release), a release number such as `1.0.0` to stay on it, or `dev` for the newest build of the main branch. Set it, then `docker compose pull`. |
 
 ## Made for you by the first-run step
