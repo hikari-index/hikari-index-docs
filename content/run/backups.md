@@ -51,15 +51,15 @@ backup folder with the worker image, which is already on the machine; it runs as
 that the copy keeps the files' owner, user id 10001:
 
 ```bash
-docker run --rm --user 0 --entrypoint cp -v hikari-index_hikari-data:/from:ro -v /backup/hikari-data:/to hikari-index/worker:local -a /from/. /to/
+docker run --rm --user 0 --entrypoint cp -v hikari-index_hikari-data:/from:ro -v /backup/hikari-data:/to ghcr.io/hikari-index/worker:latest -a /from/. /to/
 ```
 
 ```bash
-docker run --rm --user 0 --entrypoint cp -v hikari-index_hikari-images:/from:ro -v /backup/hikari-images:/to hikari-index/worker:local -a /from/. /to/
+docker run --rm --user 0 --entrypoint cp -v hikari-index_hikari-images:/from:ro -v /backup/hikari-images:/to ghcr.io/hikari-index/worker:latest -a /from/. /to/
 ```
 
-The image name ends in `:local`. If you set `HIKARI_VERSION` in `.env`,
-use that instead (`hikari-index/worker:<your version>`).
+The image is the worker your install already pulled. If you set
+`HIKARI_VERSION` in `.env`, use that tag instead of `latest`.
 
 To put one back, swap the two `-v` sources: the backup folder as
 `/from:ro`, the volume as `/to`. These commands were tested on Docker
