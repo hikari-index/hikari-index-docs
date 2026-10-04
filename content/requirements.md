@@ -59,9 +59,8 @@ problem.
 18 GB, which every analyze worker is built from. The GPU worker sits on
 top of it and adds little. The CPU worker is a separate 6 GB image that
 copies the model files out of the base, so a CPU-only install still
-builds the 18 GB base first. Once the CPU worker is built you can delete
-the base image to get that space back; you need it again only to rebuild
-the CPU worker.
+builds the 18 GB base first, and keeps needing it: every update rebuilds
+the CPU worker from it, so leave the base image in place.
 
 **For the library**, measured on one 24-minute 1080p episode:
 
