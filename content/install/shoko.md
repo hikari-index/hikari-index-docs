@@ -5,11 +5,14 @@ description: Give Hikari Index a read-only, non-admin Shoko API key and map Shok
 
 # Connect Shoko
 
-With [Shoko](https://shokoanime.com/) connected, the Onboard page lets you
-search your series and pick episodes from a list, and the Library groups
-works the way Shoko does. This page assumes you already run Shoko and
-know your way around it; Shoko itself is covered by
-[Shoko's own docs](https://docs.shokoanime.com/).
+[Shoko](https://shokoanime.com/) is a free, open-source anime collection
+manager. It identifies your files against AniDB and keeps series,
+episodes and files in order, and Hikari Index is built to use all of
+that. With Shoko connected, the Onboard page lets you search your series
+and pick episodes or a whole season from a list, and the Library groups
+works the way Shoko does. If you do not run Shoko yet, its
+[docs](https://docs.shokoanime.com/) cover setting it up; this page
+assumes you already have it.
 
 Hikari Index only ever reads from Shoko. It can reach nine fixed read
 addresses and nothing else, and it refuses a key that belongs to an admin
@@ -31,12 +34,11 @@ talks to the API.
 
 ## 2. Its API key
 
-> **Warning** Shoko's docs do not cover making a key this way, so this
-> step is ours, not Shoko's. Only do it if you are comfortable calling an
-> API by hand. The command sends the user's password to Shoko, in the
-> clear unless Shoko is behind HTTPS, so run it on your own network.
-> Anyone who holds the key it returns can read your Shoko library as that
-> user, so keep it in the one file below and nowhere else.
+> **Warning** Shoko's docs do not cover making a key this way; this step
+> is ours. It sends the user's password to Shoko, in the clear unless
+> Shoko is behind HTTPS, so do it on your own network. Anyone who holds
+> the key can read your Shoko library as that user, so keep it in the one
+> file below and nowhere else.
 
 Shoko hands a user a key when you sign in to its API with that user's
 name and password. No admin key is involved. From any machine that can
@@ -55,6 +57,12 @@ Invoke-RestMethod -Method Post -Uri http://192.0.2.20:8111/api/auth -ContentType
 The answer is `{"apikey":"..."}` (PowerShell shows a small table with one
 `apikey` row). `device` is only a label; it is how the key is named in
 Shoko's list of keys.
+
+**Or from Shoko's own API page**, with no command line: open
+`http://192.0.2.20:8111/swagger` in a browser, find **POST /api/auth**
+under **Authentication**, choose **Try it out**, replace the example body
+with the same three fields (`user`, `pass`, `device`), and choose
+**Execute**. The key is in the response body.
 
 Put the key, alone, in a file named `shoko-api-key` inside a folder named
 `secrets` beside `compose.yaml` (or wherever `HIKARI_SECRETS` points). The

@@ -65,7 +65,8 @@
     gap: var(--s-2) var(--s-6);
     align-items: center;
     min-height: 56px;
-    padding: var(--s-2) var(--gutter);
+    /* the rule runs full width; the contents line up with the centered body */
+    padding: var(--s-2) max(var(--gutter), calc((100% - 1440px) / 2 + var(--gutter)));
     box-sizing: border-box;
     border-bottom: 1px solid var(--line-1);
   }
@@ -104,7 +105,8 @@
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr);
     gap: var(--s-7);
-    max-width: 1320px;
+    max-width: 1440px; /* sidebar + body + contents; centered on wide screens */
+    margin: 0 auto;
     padding: 0 var(--gutter);
   }
   nav {

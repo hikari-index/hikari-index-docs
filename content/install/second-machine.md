@@ -11,6 +11,9 @@ can move. It never sees your video. It needs two things from the main
 machine: the gallery's address, and read-only access to the data folder
 where the extracted frames are.
 
+You can run more than one; each gets its own name and token (steps 2 and
+6), and they share the work.
+
 Get the [single-machine install](index.md) working first, with at least
 one file through all four stages. Then:
 
@@ -62,8 +65,16 @@ HIKARI_WORKER_TOKENS=analyze:<the token already there>,gpu:<the new token>
   `COMPOSE_PROFILES=cpu` and add `HIKARI_ANALYZE_STANDBY=1`. A standby
   worker takes a stage only when no regular analyze worker has checked in
   for ten minutes.
-- Or turn it off: `COMPOSE_PROFILES=` (empty). Analyze then waits
-  whenever the other machine is off.
+- Or turn it off. Stop and remove it first, because emptying the profile
+  alone leaves a running container running:
+
+  ```bash
+  docker compose rm -sf analyze-cpu
+  ```
+
+  (`analyze-gpu` if that is the one you ran), then set
+  `COMPOSE_PROFILES=` (empty). Analyze then waits whenever the other
+  machine is off.
 
 Without one of these, both workers take stages as they come, and some of
 your episodes are described on the slow machine.

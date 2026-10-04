@@ -39,11 +39,39 @@
   }
 
   function onkeydown(e) {
+    e.stopPropagation(); // the results' own key handler is for the links
     if (e.key === "Escape") {
       open = false;
       e.currentTarget.blur();
+    } else if (e.key === "Enter" && results.length) {
+      e.preventDefault();
+      box.querySelector(".results a")?.click();
+    } else if (e.key === "ArrowDown" && results.length) {
+      e.preventDefault();
+      box.querySelector(".results a")?.focus();
     }
   }
+
+  // Close only when focus leaves the whole search (box and results), so Tab
+  // and the arrow keys can move into the results.
+  function onfocusout(e) {
+    if (!box.contains(e.relatedTarget)) open = false;
+  }
+  function resultKeys(e) {
+    const links = [...box.querySelectorAll(".results a")];
+    const i = links.indexOf(document.activeElement);
+    if (e.key === "ArrowDown" && i < links.length - 1) {
+      e.preventDefault();
+      links[i + 1].focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      (i > 0 ? links[i - 1] : box.querySelector("input")).focus();
+    } else if (e.key === "Escape") {
+      open = false;
+      box.querySelector("input").focus();
+    }
+  }
+  let box;
 
   function slash(e) {
     if (e.key !== "/") return;
@@ -55,7 +83,8 @@
 
 <svelte:window onkeydown={slash} />
 
-<div class="search" role="search">
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<div class="search" role="search" bind:this={box} {onfocusout} onkeydown={resultKeys}>
   <label class="sr" for="docs-search">Search the docs</label>
   <input
     id="docs-search"
@@ -65,7 +94,6 @@
     bind:value={query}
     oninput={run}
     onfocus={() => (open = true)}
-    onblur={() => setTimeout(() => (open = false), 150)}
     {onkeydown}
   />
   {#if open && (results.length || note)}

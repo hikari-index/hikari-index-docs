@@ -92,7 +92,8 @@
   --s-7: 48px;
 
   --gutter: 24px;
-  --measure: 680px; /* prose column */
+  --measure: 72ch; /* a line of running text */
+  --column: 920px; /* the page body: tables, figures and code use all of it */
 }
 
 html {
@@ -158,6 +159,14 @@ input {
 
 /* ---- prose: what a docs page is made of ---- */
 .prose {
+  max-width: var(--column);
+}
+.prose > p,
+.prose > ul,
+.prose > ol,
+.prose > blockquote,
+.prose > h1,
+.prose li {
   max-width: var(--measure);
 }
 .prose > :first-child {
@@ -237,6 +246,32 @@ input {
 .prose pre code {
   color: var(--text-1);
 }
+/* the copy button the page adds to each code block */
+.prose pre .copy {
+  position: absolute;
+  top: var(--s-1);
+  right: var(--s-1);
+  height: auto;
+  padding: 2px var(--s-2);
+  font: 400 var(--t-label) / 1.4 var(--font-mono);
+  color: var(--text-3);
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  cursor: pointer;
+  opacity: 0;
+}
+.prose pre:hover .copy,
+.prose pre .copy:focus-visible {
+  opacity: 1;
+}
+@media (hover: none) {
+  .prose pre .copy {
+    opacity: 1;
+  }
+}
+.prose pre .copy:hover {
+  color: var(--text-1);
+}
 .prose blockquote {
   margin: 0 0 var(--s-4);
   padding: var(--s-2) var(--s-4);
@@ -265,6 +300,9 @@ input {
   border-bottom: 1px solid var(--line-1);
   color: var(--text-2);
 }
+.prose td:first-child code {
+  white-space: nowrap; /* a setting's name stays whole */
+}
 .prose thead th {
   font: 500 var(--t-label) / 1.4 var(--font-mono);
   letter-spacing: 0.08em;
@@ -288,6 +326,12 @@ input {
   height: auto;
   background: var(--img);
   outline: 1px solid var(--line-2);
+}
+.prose figure a {
+  display: block;
+}
+.prose figure a:hover img {
+  outline-color: var(--text-3);
 }
 .prose figcaption {
   margin-top: var(--s-2);

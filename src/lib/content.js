@@ -90,7 +90,8 @@ function render(slug) {
       paragraph({ tokens }) {
         const only = tokens.filter((t) => !(t.type === "text" && !t.text.trim()));
         if (only.length === 1 && only[0].type === "image") {
-          const img = this.parser.parseInline(only);
+          // Linked to itself, so a reader can open the full-size screenshot.
+          const img = `<a href="${escapeHtml(only[0].href.startsWith("/") ? `${base}${only[0].href}` : only[0].href)}" title="Open full size">${this.parser.parseInline(only)}</a>`;
           const cap = only[0].title ? `<figcaption>${marked.parseInline(only[0].title)}</figcaption>` : "";
           return `<figure>${img}${cap}</figure>\n`;
         }

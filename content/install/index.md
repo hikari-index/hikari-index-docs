@@ -5,9 +5,14 @@ description: Install Hikari Index on one machine from source with Docker Compose
 
 # Install
 
-Everything on one machine, every image built from the source. Read
-[What you need](../requirements.md) first, especially the part about
-file permissions if you are on Linux or a NAS.
+Everything on one machine, every image built from the source. This page
+gets the install running and then proves it with one piece of video; the
+setup you keep is the same install, with Shoko connected and your real
+library behind it. Read [What you need](../requirements.md) first,
+especially the part about file permissions if you are on Linux or a NAS.
+
+> The source repository is not public yet, so the clone below will not
+> work for you until it is.
 
 ## 1. Get the source
 
@@ -32,8 +37,8 @@ HIKARI_ORIGIN=http://192.0.2.10:5183
 COMPOSE_PROFILES=gpu
 ```
 
-- `HIKARI_VIDEO` is the folder your video is in. It is mounted read-only
-  into the one container that reads video.
+- `HIKARI_VIDEO` is the folder your video is in. Only the worker that
+  reads video sees it, and only read-only.
 - `HIKARI_ORIGIN` is the address you will open the gallery at, exactly as
   it will appear in your browser's address bar. The sign-in form refuses
   anything sent from another address. To use the gallery from other
@@ -80,13 +85,26 @@ writes `>>` output as UTF-16, which Compose cannot read.
 docker compose up -d
 ```
 
+This starts five containers: the gallery, its database, the worker that
+reads video, the analyze worker you picked, and the text encoder that
+makes mood search work. The encoder needs no settings.
+
 Open the gallery at the address you set in `HIKARI_ORIGIN`. The pages
 are empty until you add something.
 
+## 6. Connect Shoko
+
+If you use Shoko, [connect it](shoko.md) now, before the first run. Then
+the first run can be an episode you pick from Shoko's list.
+
 ## A first run that proves it works
 
-You need one video file in the `HIKARI_VIDEO` folder. If you would rather
-not start with your own library, the
+With Shoko connected: choose **Admin**, sign in as `admin` with the
+password from step 4, choose **Onboard**, search for a series, tick one
+episode and confirm. Then skip to step 4 below.
+
+Without Shoko, you need one video file in the `HIKARI_VIDEO` folder. If
+you would rather not start with your own library, the
 [Blender Studio open films](https://studio.blender.org/films/) are free
 to download, licensed for reuse, and are what these docs' screenshots use.
 

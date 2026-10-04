@@ -20,8 +20,20 @@ point at files which are not there. And once you have
 deleted, the tool cannot re-run it: the way back from lost files is to
 remove the work and onboard it again, which loses your review of it.
 
-Your `.env` is part of the backup too: the database was created with the
-password in it.
+## Configuration to keep
+
+Beside the three stores, keep the few files you wrote yourself, or a note
+of how to make them again:
+
+- `.env`: the database was created with the password in it, so without
+  it the database will not open.
+- `compose.override.yaml`, if you made one (for example for a second
+  video folder, on the Shoko page).
+- The Shoko key file (`secrets/shoko-api-key`). You can also simply make
+  a new key for the same user ([Connect Shoko](../install/shoko.md)).
+- On a second analyze machine, its `.env.rtx-worker` or `.env.cpu-worker`
+  and the share volume's settings. Its token is also in the main
+  `.env`, so it can be made again from there.
 
 ## Folders or volumes
 

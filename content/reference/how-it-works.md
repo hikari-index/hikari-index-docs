@@ -90,11 +90,10 @@ pick without touching your review.
 - A label comes from a fixed list that includes "unknown". A model with
   no evidence says so instead of guessing.
 
-## What the public can see
+## Default visibility
 
 The **public pages** (Library, Explore, Palette, Techniques, a still, its
-similar stills) are open to anyone who can reach the gallery. The admin
-area is behind your sign-in. An ordinary install is built for your own
-network. A copy for people outside it should be the read-only build,
-which has no admin area, no sign-in page and no way to change anything.
-How to make and run one is not written up yet.
+similar stills) open without signing in, for anyone who can reach the
+gallery. On your own network that is mostly you and whoever shares it,
+so it may not matter much; it is why a still you have not reviewed yet
+can already be seen there. The admin area is always behind your sign-in.

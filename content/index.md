@@ -1,15 +1,15 @@
 ---
 title: Hikari Index
-description: A local-first anime cinematography reference library. Pick an episode or a film from your own collection and get a few dozen stills that stand for it, with palette, framing, tags and likeness search.
+description: An anime-first cinematography reference library. Pick an episode or a film from your own collection and get a few dozen stills that stand for it, with palette, framing, tags and likeness search.
 ---
 
 # Hikari Index
 
-<p class="lead">A reference library of stills from video you already have.
-You pick an episode, a film or a season; Hikari Index pulls a few dozen
-frames that stand for it, describes each one, and serves them from a
-gallery on your own network. Your video is never changed, scanned as a
-whole, or sent anywhere.</p>
+<p class="lead">An anime-first reference library of stills from video you
+already have. You pick an episode, a film or a season; Hikari Index pulls
+a few dozen frames that stand for it, describes each one, and serves them
+from a gallery on your own network. It reads only the files you choose,
+never changes them, and never sends them anywhere.</p>
 
 ![The Explore page of a gallery holding five Blender Studio films](/shots/explore.avif "Explore, the front page. Frames from Blender Studio open films, (CC) Blender Foundation | studio.blender.org.")
 
@@ -23,26 +23,25 @@ Each still can carry:
 - an **image vector**, so you can find stills that look alike, or search
   by mood with a phrase like "rainy neon street at night".
 
-It was built for anime, and the models behind the labels were trained on
-it. It runs on other video too: the palettes and likeness search work the
-same, and the labels are unmeasured.
+The models behind the labels were trained on anime. It runs on other
+video too, like the Blender films in these screenshots: the palettes and
+likeness search work the same, and the labels are unmeasured.
 
 ## Where to start
 
 1. [What you need](requirements.md): a machine with Docker and your video,
-   and somewhere to run the models.
+   somewhere to run the models, and ideally Shoko.
 2. [Install](install/index.md): everything on one machine, built from
    source.
-3. [Adding work](use/adding.md) and [reviewing](use/review.md) once it runs.
-
-If you use [Shoko](https://shokoanime.com/), [connect it](install/shoko.md)
-after your first file has gone through without it.
+3. [Connect Shoko](install/shoko.md), if you use it. You then pick series
+   and episodes from a list and never have to type a path.
+4. [Adding work](use/adding.md) and [reviewing](use/review.md) once it runs.
 
 ## What it is not
 
 - Not a media server or a player. It never streams your video.
-- Not a scraper. Nothing runs until you choose a file, and it never walks
-  your whole library.
+- Not a scanner. Nothing runs until you choose an episode, a season or a
+  film, and it never looks through the rest of your library.
 - Not a character or face recognizer. The models describe scenes and
   framing; they never name anyone.
 - Not finished. It is one person's working install, opened up. Images are

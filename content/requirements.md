@@ -106,10 +106,15 @@ These are single measurements on one desktop, not a benchmark. A NAS
 processor with 4 slower cores will take longer; how much longer has not
 been measured.
 
-## Optional: Shoko
+## Shoko: optional, strongly recommended
 
-With [Shoko](https://shokoanime.com/) connected you pick series and
-episodes from a list, and the library is grouped the way Shoko groups it.
-Without it you add files and folders by path and type the titles. Get one
-file through without Shoko first; [connecting it](install/shoko.md) is a
-separate step.
+[Shoko](https://shokoanime.com/) is a free anime collection manager that
+identifies your files and keeps series, episodes and files in order.
+Hikari Index is built to lean on it. With Shoko connected you search for
+a series, tick episodes or a whole season, and the library is grouped the
+way Shoko groups it; you never type a path.
+
+Without Shoko it still works: you add files and folders by path and type
+the titles and episode numbers yourself. That is fine for a few films and
+slow for a large collection. [Connect Shoko](install/shoko.md) right
+after installing.

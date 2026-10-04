@@ -65,13 +65,19 @@ set.
 | `HIKARI_WORKER_STANDBY` | `1` makes it a fallback (CPU example only; see [the second-machine page](../install/second-machine.md)). |
 | `HIKARI_IMAGE_REPOSITORY` | CPU only: pull the image from a registry of yours instead of building it. |
 
-## Behind a reverse proxy
+## HTTPS through a reverse proxy
 
-Set `HIKARI_ORIGIN` to the address people type, for example
-`https://hikari.example`. One known gap: the sign-in cookie is not yet
-marked as HTTPS-only, because the gallery was built for a home network
-over plain HTTP. It still works behind HTTPS; it is just not as strict as
-it should be there.
+The gallery serves plain HTTP. If you already run a reverse proxy (Caddy,
+nginx, Traefik, Nginx Proxy Manager) for other services on your network,
+putting the gallery behind it with HTTPS is worth doing: browsers only
+use HTTP/2 over HTTPS, and HTTP/2 fetches the dozens of small images on
+a sheet or a search page over one connection instead of a handful at a
+time, so those pages fill in faster.
 
-The admin area is meant for your own network. Do not put an ordinary
-install where strangers can reach it.
+Point the proxy at the gallery's port and set `HIKARI_ORIGIN` to the
+address people type, for example `https://hikari.home.example`, or the
+sign-in form will refuse them. The sign-in cookie is not yet marked as
+HTTPS-only; it works, it is just less strict than it should be.
+
+The admin area is meant for your own network. Do not put an install
+where strangers can reach it.
