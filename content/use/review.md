@@ -72,9 +72,9 @@ The picked, unreviewed stills the run records give a reason to check:
 - **unsure scene label**: a setting, time of day or weather label
   proposed with low confidence (the score is shown).
 - **unsure shot scale**: a shot size proposed from weak evidence (the
-  scenery tag, or the size of a head when no face was found), or one
-  where the size of a face and the size of the same person's head
-  disagree; the reason says which. Off until you pick it, because it
+  scenery tag, the size of a head when no face was found, or tags that
+  pointed two ways), or one where the size of a face and the size of the
+  same person's head disagree; the reason says which. Off until you pick it, because it
   often marks a quarter to a half of a work's stills. Shot sizes the
   machine left empty are not listed.
 
