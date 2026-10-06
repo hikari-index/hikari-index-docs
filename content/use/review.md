@@ -71,11 +71,12 @@ The picked, unreviewed stills the run records give a reason to check:
   nothing more.
 - **unsure scene label**: a setting, time of day or weather label
   proposed with low confidence (the score is shown).
-- **unsure shot scale**: a shot size guessed from weak evidence, the
-  scenery tag or the size of a head when no face was found; the reason
-  says which. Off until you pick it, because it often marks a quarter to
-  a half of a work's stills and most of those guesses are right. Switch
-  it on to check them, or to fill in shot sizes the machine left empty.
+- **unsure shot scale**: a shot size proposed from weak evidence (the
+  scenery tag, or the size of a head when no face was found), or one
+  where the size of a face and the size of the same person's head
+  disagree; the reason says which. Off until you pick it, because it
+  often marks a quarter to a half of a work's stills. Shot sizes the
+  machine left empty are not listed.
 
 ![Worth a look, listing stills with text on the frame and unsure labels](/shots/worth-a-look.avif "Worth a look: end credits and title cards are the usual catch. Frames (CC) Blender Foundation | studio.blender.org.")
 
