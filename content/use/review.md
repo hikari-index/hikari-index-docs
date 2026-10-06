@@ -69,8 +69,13 @@ The picked, unreviewed stills the run records give a reason to check:
 - **rating**: the tagger's scores for questionable and explicit add up to
   0.10 or more. Some shows trip this on every episode; it is a prompt,
   nothing more.
-- **unsure label**: a setting, time of day or weather label proposed with
-  low confidence (the score is shown).
+- **unsure scene label**: a setting, time of day or weather label
+  proposed with low confidence (the score is shown).
+- **unsure shot scale**: a shot size guessed from weak evidence, the
+  scenery tag or the size of a head when no face was found; the reason
+  says which. Off until you pick it, because it often marks a quarter to
+  a half of a work's stills and most of those guesses are right. Switch
+  it on to check them, or to fill in shot sizes the machine left empty.
 
 ![Worth a look, listing stills with text on the frame and unsure labels](/shots/worth-a-look.avif "Worth a look: end credits and title cards are the usual catch. Frames (CC) Blender Foundation | studio.blender.org.")
 
