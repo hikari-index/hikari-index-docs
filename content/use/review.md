@@ -1,6 +1,6 @@
 ---
 title: Reviewing
-description: The marks, the Review page, Worth a look, and culling repeated openings and endings.
+description: The marks, the Review page, Worth a look, checking labels, and culling repeated openings and endings.
 ---
 
 # Reviewing
@@ -11,7 +11,7 @@ frame) and fix what the models got wrong. You do not have to look at
 every still: cull what should go and accept the rest in bulk.
 
 Sign in through **Admin**. The admin bar has **Review**, **Worth a
-look**, **Onboard**, **Jobs** and **Removed**.
+look**, **Labels**, **Onboard**, **Jobs** and **Removed**.
 
 ## The marks
 
@@ -123,6 +123,38 @@ its analysis runs again: **Re-run** on Jobs, or **Re-run every finished
 work** for all of them (see [The pool and re-runs](pool.md)). A re-run
 picks the stills again, and a work whose extra frames were discarded
 cannot be re-run, so it keeps the labels it has.
+
+## Checking labels
+
+The labels come from models and rules, and some are right more often than
+others. To find out which, tick **Labels checked** under the labels when
+you edit a still and have looked at every one, then save. A label you
+leave as proposed then counts as right, and one you change or clear
+(**none**) counts as wrong. Changing a label ticks the box for you.
+
+The check keeps the labels as they were when you saved. If a re-run of
+the work changes them, the box comes back unticked, but the old check
+still counts, against the old labels, until you save the still again:
+ticked, it is replaced by a check of the new labels; unticked, it is
+removed.
+
+**Admin → Labels** adds the checks up. For each label it shows how often
+your review agreed, split by where the label came from (the tagger's
+tags, the size of the largest face, the color measurements, and so on)
+and by value, with what you corrected each value to. The percentages
+count only labels that were proposed; a label left empty, and one you
+added, are counted separately, and so is a shot size suggested from a
+head: its own line says how many you accepted, changed or left empty. Look at the count beside each percentage:
+shares from fewer than 20 stills are dimmed, too few to trust. Checking
+stills from several kinds of show gives the most even picture. The page
+also says which tag list and settings made the labels you checked, and
+warns when your checks mix more than one.
+
+The page links a download of the checks. It is for whoever changes the
+models or their settings: the tool's
+[`annotation.score`](https://github.com/hikari-index/hikari-index/blob/main/providers/annotation/score.py)
+command scores a new analysis of the same works against it, outside the
+gallery, before the change touches the rest of your library.
 
 ## Repeats
 
