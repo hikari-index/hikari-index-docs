@@ -71,9 +71,12 @@ The picked, unreviewed stills the run records give a reason to check:
   nothing more.
 - **unsure scene label**: a setting, time of day or weather label
   proposed with low confidence (the score is shown).
-- **shot size from a head**: no face was found, so the shot size was
-  guessed from the height of a head. On fresh shows about two guesses in
-  three were right; this reason is how you find the third.
+- **shot size from a head**: no face was found, so a shot size was read
+  from the height of a head. It is a suggestion: the still has no shot
+  size, and Techniques does not count it, until you press **accept** on
+  the card or pick it in edit labels. On fresh shows about two
+  suggestions in three were right; this reason is how you find the third
+  without the gallery asserting any of them.
 - **face and head disagree**: the shot size came from the size of a face,
   but the same person's head points to another size. The face's size was
   wrong about half the time on such frames, mostly head and shoulders it
@@ -91,8 +94,9 @@ tiny or absent.
 
 ![Worth a look, listing stills with text on the frame and unsure labels](/shots/worth-a-look.avif "Worth a look: end credits and title cards are the usual catch. Frames (CC) Blender Foundation | studio.blender.org.")
 
-A reason hides nothing. Each still has cull, keep, hide and edit labels,
-and the page filters by reason; **unreviewed only** can be switched off
+A reason hides nothing. Each still has cull, keep, hide and edit labels
+(and **accept** where a shot size is suggested), and the page filters by
+reason; **unreviewed only** can be switched off
 to include stills you already marked. Works imported before these
 reasons existed have none until you press **Read the run records
 again…**, which queues one import per imported work on Jobs (busy works
