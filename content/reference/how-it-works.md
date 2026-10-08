@@ -96,7 +96,7 @@ The labels are machine-made and some of them are guesses. This section
 says which, how often they are right, and what the gallery does about
 it, so nothing is hidden behind a confident-looking label.
 
-The short version: **colour, palette, tags and mood search are the
+The short version: **color, palette, tags and mood search are the
 strong part**; they are what the tool was built for and they are right
 most of the time. **Framing labels (shot size, composition, camera
 angle) are a help, not an answer**: if you care about them, plan on a
