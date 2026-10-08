@@ -87,10 +87,11 @@ built so that doing nothing is safe: a reason changes no label.
   third to a half of such stills, against about one in eight elsewhere,
   mostly head and shoulders it called close-up; the reason tells you both
   readings so you can pick.
-- **unsure shot scale**: a shot size proposed from weak evidence (the
-  scenery tag, or tags that pointed two ways); the reason says which. Off
-  until you pick it, because it marks many stills that are fine. Shot
-  sizes the machine left empty are not listed.
+- **unsure shot scale**: a shot size proposed from weak evidence: the
+  scenery tag, or the tagger's tags when two pointed to different sizes
+  (or, on a run with a lowered tag cut, when its one tag was weak); the
+  reason says which. Off until you pick it, because it marks many stills
+  that are fine. Shot sizes the machine left empty are not listed.
 
 When you correct a shot size: close-up means a face or head filling most
 of the frame, with little or no shoulder. Head and shoulders, waist up and
