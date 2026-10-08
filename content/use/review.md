@@ -71,12 +71,19 @@ The picked, unreviewed stills the run records give a reason to check:
   nothing more.
 - **unsure scene label**: a setting, time of day or weather label
   proposed with low confidence (the score is shown).
+- **shot size from a head**: no face was found, so the shot size was
+  guessed from the height of a head. On fresh shows about two guesses in
+  three were right; this reason is how you find the third.
 - **unsure shot scale**: a shot size proposed from weak evidence (the
-  scenery tag, the size of a head when no face was found, or tags that
-  pointed two ways), or one where the size of a face and the size of the
-  same person's head disagree; the reason says which. Off until you pick it, because it
-  often marks a quarter to a half of a work's stills. Shot sizes the
-  machine left empty are not listed.
+  scenery tag, or tags that pointed two ways); the reason says which. Off
+  until you pick it, because it marks many stills that are fine. Shot
+  sizes the machine left empty are not listed.
+
+When you correct a shot size: close-up means a face or head filling most
+of the frame, with little or no shoulder. Head and shoulders, waist up and
+knees up are all medium; a whole figure is wide. Extreme close-up is a
+detail (eyes, a hand) filling the frame, extreme wide a place with figures
+tiny or absent.
 
 ![Worth a look, listing stills with text on the frame and unsure labels](/shots/worth-a-look.avif "Worth a look: end credits and title cards are the usual catch. Frames (CC) Blender Foundation | studio.blender.org.")
 
