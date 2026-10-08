@@ -63,10 +63,13 @@ should go, then mark the rest of the season kept.
 ## Worth a look
 
 The picked, unreviewed stills the run records give a reason to check.
-Expect a fair number: on a library of about 9,500 stills, about 1,300.
-Most are framing labels (shot size, composition), which the models guess
-at; color, tags and mood need far less of your time. The page is
-built so that doing nothing is safe: a reason changes no label.
+Expect a fair number: on the maintainer's library of about 9,500
+stills, about 1,300; your shows will differ, up or down. Most are
+framing labels (shot size, composition), which the models guess at;
+color, tags and mood need far less of your time. The page is built so
+that doing nothing is safe: a reason changes no label. The rates quoted
+for each reason are from the maintainer's own stills, graded by one
+person, and are there to set expectations, not to be relied on.
 
 - **text on the frame**: the tagger saw credits, a title card, subtitles
   or a logo.

@@ -96,12 +96,20 @@ The labels are machine-made and some of them are guesses. This section
 says which, how often they are right, and what the gallery does about
 it, so nothing is hidden behind a confident-looking label.
 
+Every figure below comes from the maintainer's own library: a few
+hundred stills from a handful of shows, graded blind by one person.
+Your shows, your art styles and your eye will differ, so treat the
+numbers as the shape of the thing, not a promise. That is also why
+every label can be corrected, every guess waits for you, and the label
+report measures the models on your own reviews rather than on these.
+
 The short version: **color, palette, tags and mood search are the
 strong part**; they are what the tool was built for and they are right
 most of the time. **Framing labels (shot size, composition, camera
 angle) are a help, not an answer**: if you care about them, plan on a
-fair amount of review. On one library of about 9,500 stills, about
-1,300 were listed on Worth a look for a reason worth checking.
+fair amount of review. On the maintainer's library of about 9,500
+stills, about 1,300 were listed on Worth a look for a reason worth
+checking; yours may be far fewer or far more.
 
 - **Shot size on a still with a face** comes from how much of the frame
   the face fills. On fresh shows graded blind by a person it agreed about
