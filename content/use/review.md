@@ -82,9 +82,11 @@ built so that doing nothing is safe: a reason changes no label.
   suggestions in three were right; this reason is how you find the third
   without the gallery asserting any of them.
 - **face and head disagree**: the shot size came from the size of a face,
-  but the same person's head points to another size. The face's size was
-  wrong about half the time on such frames, mostly head and shoulders it
-  called close-up.
+  but the same person's head points to another size. Nothing is changed:
+  the label stays the face's. On fresh shows it was wrong on about a
+  third to a half of such stills, against about one in eight elsewhere,
+  mostly head and shoulders it called close-up; the reason tells you both
+  readings so you can pick.
 - **unsure shot scale**: a shot size proposed from weak evidence (the
   scenery tag, or tags that pointed two ways); the reason says which. Off
   until you pick it, because it marks many stills that are fine. Shot
