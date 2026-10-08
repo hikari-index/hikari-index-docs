@@ -98,6 +98,14 @@ reasons existed have none until you press **Read the run records
 again…**, which queues one import per imported work on Jobs (busy works
 are skipped) and changes none of your marks.
 
+Reading the run records again only re-reads what analysis already wrote:
+it refreshes the reasons on this page, not the labels. New labels from an
+update (a camera angle, a shot size from a head) reach a work only when
+its analysis runs again: **Re-run** on Jobs, or **Re-run every finished
+work** for all of them (see [The pool and re-runs](pool.md)). A re-run
+picks the stills again, and a work whose extra frames were discarded
+cannot be re-run, so it keeps the labels it has.
+
 ## Repeats
 
 After an import, once it has no other import waiting, the gallery
