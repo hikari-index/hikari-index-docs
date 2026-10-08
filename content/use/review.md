@@ -98,8 +98,9 @@ reasons existed have none until you press **Read the run records
 again…**, which queues one import per imported work on Jobs (busy works
 are skipped) and changes none of your marks.
 
-Reading the run records again only re-reads what analysis already wrote:
-it refreshes the reasons on this page, not the labels. New labels from an
+Reading the run records again re-reads what analysis already wrote: it
+refreshes the reasons and labels from those records (your corrections
+stay) but runs no analysis, so it adds nothing new. New labels from an
 update (a camera angle, a shot size from a head) reach a work only when
 its analysis runs again: **Re-run** on Jobs, or **Re-run every finished
 work** for all of them (see [The pool and re-runs](pool.md)). A re-run
