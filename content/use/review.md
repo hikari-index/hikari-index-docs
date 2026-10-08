@@ -104,9 +104,10 @@ are skipped) and changes none of your marks.
 
 Reading the run records again re-reads what analysis already wrote: it
 refreshes the reasons and labels from those records (your corrections
-stay) but runs no analysis, so it adds nothing new. After updating from
-1.2.0, do it once: shot sizes from a head that were imported before the
-update stay the still's size until their records are read again. New labels from an
+stay) but runs no analysis, so it adds nothing new. (If you ran a
+development build before 1.3.0: do it once, so shot sizes from a head
+that were imported as labels become suggestions. Releases before 1.3.0
+never made them.) New labels from an
 update (a camera angle, a shot size from a head) reach a work only when
 its analysis runs again: **Re-run** on Jobs, or **Re-run every finished
 work** for all of them (see [The pool and re-runs](pool.md)). A re-run
