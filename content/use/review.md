@@ -62,24 +62,67 @@ should go, then mark the rest of the season kept.
 
 ## Worth a look
 
-The picked, unreviewed stills the run records give a reason to check:
+The picked, unreviewed stills the run records give a reason to check.
+Expect a fair number: on the maintainer's library of about 9,500
+stills, about 1,300; your shows will differ, up or down. Most are
+framing labels (shot size, composition), which the models guess at;
+color, tags and mood need far less of your time. The page is built so
+that doing nothing is safe: a reason changes no label. The rates quoted
+for each reason are from the maintainer's own stills, graded by one
+person, and are there to set expectations, not to be relied on.
 
 - **text on the frame**: the tagger saw credits, a title card, subtitles
   or a logo.
 - **rating**: the tagger's scores for questionable and explicit add up to
   0.10 or more. Some shows trip this on every episode; it is a prompt,
   nothing more.
-- **unsure label**: a setting, time of day or weather label proposed with
-  low confidence (the score is shown).
+- **unsure scene label**: a setting, time of day or weather label
+  proposed with low confidence (the score is shown).
+- **shot size from a head**: no face was found, so a shot size was read
+  from the height of a head. It is a suggestion: the still has no shot
+  size, and Techniques does not count it, until you press **accept** on
+  the card or pick it in edit labels. On fresh shows about two
+  suggestions in three were right; this reason is how you find the third
+  without the gallery asserting any of them.
+- **face and head disagree**: the shot size came from the size of a face,
+  but the same person's head points to another size. Nothing is changed:
+  the label stays the face's. On fresh shows it was wrong on about a
+  third to a half of such stills, against about one in eight elsewhere,
+  mostly head and shoulders it called close-up; the reason tells you both
+  readings so you can pick.
+- **unsure shot scale**: a shot size proposed from weak evidence: the
+  scenery tag, or the tagger's tags when two pointed to different sizes
+  (or, on a run with a lowered tag cut, when its one tag was weak); the
+  reason says which. Off until you pick it, because it marks many stills
+  that are fine. Shot sizes the machine left empty are not listed.
+
+When you correct a shot size: close-up means a face or head filling most
+of the frame, with little or no shoulder. Head and shoulders, waist up and
+knees up are all medium; a whole figure is wide. Extreme close-up is a
+detail (eyes, a hand) filling the frame, extreme wide a place with figures
+tiny or absent.
 
 ![Worth a look, listing stills with text on the frame and unsure labels](/shots/worth-a-look.avif "Worth a look: end credits and title cards are the usual catch. Frames (CC) Blender Foundation | studio.blender.org.")
 
-A reason hides nothing. Each still has cull, keep, hide and edit labels,
-and the page filters by reason; **unreviewed only** can be switched off
+A reason hides nothing. Each still has cull, keep, hide and edit labels
+(and **accept** where a shot size is suggested), and the page filters by
+reason; **unreviewed only** can be switched off
 to include stills you already marked. Works imported before these
 reasons existed have none until you press **Read the run records
 again…**, which queues one import per imported work on Jobs (busy works
 are skipped) and changes none of your marks.
+
+Reading the run records again re-reads what analysis already wrote: it
+refreshes the reasons and labels from those records (your corrections
+stay) but runs no analysis, so it adds nothing new. (If you ran a
+development build before 1.3.0: do it once, so shot sizes from a head
+that were imported as labels become suggestions. Releases before 1.3.0
+never made them.) New labels from an
+update (a camera angle, a shot size from a head) reach a work only when
+its analysis runs again: **Re-run** on Jobs, or **Re-run every finished
+work** for all of them (see [The pool and re-runs](pool.md)). A re-run
+picks the stills again, and a work whose extra frames were discarded
+cannot be re-run, so it keeps the labels it has.
 
 ## Checking labels
 
@@ -100,7 +143,8 @@ your review agreed, split by where the label came from (the tagger's
 tags, the size of the largest face, the color measurements, and so on)
 and by value, with what you corrected each value to. The percentages
 count only labels that were proposed; a label left empty, and one you
-added, are counted separately. Look at the count beside each percentage:
+added, are counted separately, and so is a shot size suggested from a
+head: its own line says how many you accepted, changed or left empty. Look at the count beside each percentage:
 shares from fewer than 20 stills are dimmed, too few to trust. Checking
 stills from several kinds of show gives the most even picture. The page
 also says which tag list and settings made the labels you checked, and

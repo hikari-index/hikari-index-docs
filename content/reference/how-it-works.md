@@ -90,6 +90,56 @@ pick without touching your review.
 - A label comes from a fixed list that includes "unknown". A model with
   no evidence says so instead of guessing.
 
+## What the tool guesses, and what it holds back
+
+The labels are machine-made and some of them are guesses. This section
+says which, how often they are right, and what the gallery does about
+it, so nothing is hidden behind a confident-looking label.
+
+Every figure below comes from the maintainer's own library: a few
+hundred stills from a handful of shows, graded blind by one person.
+Your shows, your art styles and your eye will differ, so treat the
+numbers as the shape of the thing, not a promise. That is also why
+every label can be corrected, every guess waits for you, and the label
+report measures the models on your own reviews rather than on these.
+
+The short version: **color, palette, tags and mood search are the
+strong part**; they are what the tool was built for and they are right
+most of the time. **Framing labels (shot size, composition, camera
+angle) are a help, not an answer**: if you care about them, plan on a
+fair amount of review. On the maintainer's library of about 9,500
+stills, about 1,300 were listed on Worth a look for a reason worth
+checking; yours may be far fewer or far more.
+
+- **Shot size on a still with a face** comes from how much of the frame
+  the face fills. On fresh shows graded blind by a person it agreed about
+  nine times in ten. Its usual miss is a head-and-shoulders shot called
+  close-up.
+- **Shot size on a still with no face** is the weak spot. The tag reader
+  answers a few, the scenery rule calls scenery wide, and the rest would
+  be blank. Since 1.3.0 the tool also reads a size from the height of the
+  largest head it finds (backs of heads, profiles, faces the face
+  detector missed). On three blind grades that guess was right about two
+  times in three, and every other method tested did no better on those
+  stills. So the gallery does not make it the still's shot size. It is
+  held as a suggestion: listed on Worth a look as "shot size from a
+  head", not counted in Techniques, not shown on the public pages, until
+  you accept it or set a size yourself. The one in three it gets wrong is
+  the reason it waits for you.
+- **Camera angle** comes from a classifier that reads the whole frame.
+  On fresh shows it agreed about four times in five, against about one in
+  two for always saying eye level. It is weakest on dutch and overhead
+  frames.
+- **The face detector itself misses faces**: on about one faceless still
+  in five a person can see a face it did not. The head detector covers
+  most of those, which is why the suggestion above exists.
+
+Every reason on Worth a look is evidence, not a verdict, and the label
+report under Admin shows how often your reviews agreed with each source.
+None of these models was trained on this tool's own definitions, so the
+remaining errors are a boundary (head and shoulders against close-up,
+object close-ups) that another cut-off does not fix.
+
 ## Default visibility
 
 The **public pages** (Library, Explore, Palette, Techniques, a still, its
