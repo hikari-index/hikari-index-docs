@@ -9,7 +9,7 @@ export const groups = [
     pages: ["use/browsing", "use/search", "use/adding", "use/jobs", "use/review", "use/workbench", "use/pool", "use/finishing"],
   },
   { title: "Keep it running", pages: ["run/troubleshooting", "run/backups", "run/updating"] },
-  { title: "Reference", pages: ["reference/settings", "reference/how-it-works", "credits"] },
+  { title: "Reference", pages: ["reference/settings", "reference/how-it-works", "reference/labels", "credits"] },
 ];
 
 export const order = groups.flatMap((g) => g.pages);
