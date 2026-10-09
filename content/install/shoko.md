@@ -39,9 +39,8 @@ talks to the API.
 > Shoko's own docs do not cover; the steps here are ours. Only proceed
 > if you are comfortable with this: sending a request to an API, from a
 > terminal or from Shoko's API page in a browser, and reading the
-> answer. Both routes are below. Neither changes anything in your Shoko
-> install; each makes, or later removes, one key for the one user you
-> created.
+> answer. Both routes are below. Neither touches your Shoko install
+> beyond this: each creates, or later removes, this one user's API key.
 >
 > Either way the call sends that user's password to Shoko, in the clear
 > unless Shoko is behind HTTPS, so do it on your own network. Anyone who
