@@ -13,9 +13,11 @@ long one.
 Two things to hold on to while reading:
 
 - **Every number here comes from the maintainer's own library**: a few
-  hundred stills from a handful of shows, graded blind by one person
-  against written rules. Your shows, your art styles and your eye will
-  differ. The numbers show the shape of each label, not a promise.
+  hundred stills from a handful of shows, graded by one person against
+  written rules, most of it blind (the July review showed the
+  proposals; the search measurement used a model as judge, checked by
+  a human audit). Your shows, your art styles and your eye will differ.
+  The numbers show the shape of each label, not a promise.
 - **Color, palette, tags and mood search are the strong part**, and what
   the tool was built for. The framing labels (shot size, composition,
   camera angle) are a help, not an answer, and the gallery is built so
@@ -25,19 +27,21 @@ Two things to hold on to while reading:
 ## The signals
 
 Everything below is made from these, on the frames the first stage
-pulled from the video; nothing reads the video twice.
+pulled from the video; the label models read those frames, never the
+video.
 
 | Signal | What it is | Used for |
 |---|---|---|
 | Color measurement | The frame's own pixels: hue, saturation and brightness, and a palette | color bias, saturation, lighting (part), the palette |
 | Tag reader | A model trained on illustration tags, kept behind a fixed allow-list of about 180 names | setting, time, weather, tags, part of shot size, text and rating reasons |
 | Face detector | Finds anime faces and their boxes | shot size, composition, people (as a floor) |
-| Head and person detectors | Find heads (including backs and profiles) and whole figures | shot size and composition where no face was found; a second opinion where one was |
+| Head and person detectors | Find heads (including backs and profiles) and whole figures | heads: shot size and composition where no face was found, and a second opinion where one was; person boxes are recorded but make no label yet |
 | Angle classifier | Reads the whole frame and names a camera angle | camera angle |
 | Image and text vectors | One vector per still and per typed phrase, in the same space | likeness, mood search |
 
-The models were trained on anime or illustration; on anything else the
-labels are unmeasured. None of them was trained on this tool's own
+Most of the models were trained on anime or illustration (the angle
+classifier on live-action stills); on anything else the labels are
+unmeasured. None of them was trained on this tool's own
 definitions (the five shot sizes, the composition classes), which is
 where most of the remaining errors come from.
 
@@ -45,20 +49,22 @@ where most of the remaining errors come from.
 
 ### Color bias and saturation
 
-Measured from the pixels, with fixed bands. When the maintainer reviewed
-200 stills in July, these were left as proposed on 99 and 100 of every
-100. Defined bands beat guessing here, so there is no model.
+Measured from the pixels, with fixed bands; the tag reader's monochrome
+tag can override color bias to neutral. When the maintainer reviewed 200
+stills in July, these were left as proposed on 99 and 100 of every 100.
+Defined bands beat guessing here, so there is no model.
 
 ### Setting, time of day, weather
 
 From the tag reader's tags, taken at a cut the model's own card calls
 balanced (0.2653) rather than the stricter default used elsewhere. On the
 same 200-still review, proposals were accepted about nine times in ten
-(setting 92, time 91, weather 95 of 100). The cost is coverage: time of
-day and weather are proposed on only a fifth to a quarter of stills,
-because the tagger names them only when they are plain to see. A
-proposal under the usual cut is listed on Worth a look as **unsure
-scene label** with its score.
+(setting 92, time 91, weather 95 of 100). The cost is coverage: on the
+maintainer's library, time of day and weather were proposed on about a
+quarter of stills in the reviewed set and a fifth across the rest,
+because the tagger names them only when they are plain to see. When the
+strongest scene proposal on a still falls under the usual cut of 0.35,
+it is listed on Worth a look as **unsure scene label** with its score.
 
 ### Lighting
 
@@ -84,17 +90,19 @@ rest stay quiet.
    on). Right 27 times in 29 on a blind grade of faceless stills.
 2. **The size of the largest face.** The face's area as a share of the
    frame, with cuts at 0.14 (close-up) and 0.009 (wide). On 74 stills
-   with a face from eleven shows the cuts were never fitted on, 65 were
-   right (88 in 100). Most misses are head and shoulders called close-up.
-3. **Scenery.** No face, and the tags say scenery or no humans: wide.
+   with a face from eleven shows the cuts were never fitted on, 64 were
+   right (86 in 100). Most misses are head and shoulders called close-up.
+3. **Scenery.** No face, and the tag reader's scenery tag is on: wide.
    Right 28 times in 42 on the faceless grade; the maintainer accepts
    the misses (a close-up of leaves is "wide" by this rule).
 4. **The height of the largest head**, for stills nothing above
    answered. Cuts at 0.72 and 0.19 of frame height. On three blind grades
    of fresh works it was right on 8 of 11, 14 of 22 and 20 of 30 of the
-   stills it filled: about two in three, and every other method tested
-   on those stills did no better (two whole-frame shot-size classifiers,
-   a second face detector). So the gallery holds it as a **suggestion**:
+   stills it filled: about two in three. Two whole-frame shot-size
+   classifiers and a second face detector were tested on the same
+   stills against bars written down first, and none cleared them (the
+   best, as a second opinion, agreed with the head on 22 of 30 and was
+   right on 16 of those). So the gallery holds it as a **suggestion**:
    listed on Worth a look as **shot size from a head**, not the still's
    size and not counted in Techniques until you accept it or set one.
 
@@ -117,8 +125,10 @@ The horizontal position of the subject: the largest face, or, with no
 face, the largest head, against the center and the thirds lines (within
 0.06 of the frame width). A mirror check names **symmetrical** on the
 rare frame that is. On the blind grade, the class from the face matched
-the grader's on 22 of 27 stills, and from the head on 30 of 42. Stills
-with neither have no composition. Earlier attempts to find the subject
+the grader's on 22 of 27 stills, and from the largest head on 30 of 42
+(faced and faceless stills together). Stills with neither have no
+composition unless the mirror check names symmetrical. Earlier attempts
+to find the subject
 without a detector (edges, saliency, contrast) did not reach a usable
 agreement and were dropped.
 
@@ -126,10 +136,11 @@ agreement and were dropped.
 
 A classifier (aslakey/camera_angle, a fine-tune of DINOv2 trained on
 live-action stills) reads the whole frame, squeezed to 224 by 224. On 148
-stills from eleven shows graded blind, it agreed with the grader on 118
-(80 in 100); always answering eye level would have scored 79. It finds
-low and high angles well (31 of 42, 15 of 16), overhead and dutch badly
-(2 of 4, 2 of 7), and about one call in ten is a low-versus-eye-level
+stills from eleven shows graded blind, it agreed with the grader on 117
+(79 in 100) on the frames as the worker sees them; always answering eye
+level would have scored 79. It finds low and high angles well (about
+three in four and nearly all), overhead and dutch badly (about a third
+and a quarter), and about one call in ten is a low-versus-eye-level
 split that a second reader would argue either way. It abstains only on a
 flat title card.
 
@@ -145,8 +156,9 @@ name, never by substring, because the vocabulary is full of traps.
 
 One image vector per still and one text vector per typed phrase, from the
 same model (SigLIP 2), so a phrase finds frames by what is in them, not
-by tags. Measured against 250 judged queries on the maintainer's library,
-semantic search beat tag matching on every count, and on mood phrases
+by tags. Measured against 250 judged queries on the maintainer's library
+(149 typed phrases, 101 find-more-like-this), semantic search beat tag
+matching on every count, and on mood phrases
 (a feeling rather than a thing) tag matching could not answer at all.
 Likeness between stills uses the same vectors; it finds the same subject
 and style, not the same framing.
@@ -155,13 +167,16 @@ and style, not the same framing.
 
 | Sample | Stills | From | Graded by |
 |---|---|---|---|
-| July review | 200 | 9 works | the maintainer, with the proposals shown |
+| July review | 200 | 9 works | the maintainer, with the proposals shown (not blind) |
 | Blind grade, October | 72 | 8 works, chosen to stress the close-up border | the maintainer, blind, film terms |
 | Angle test | 154 | 11 shows never used for fitting, random | the maintainer, blind |
 | Faceless test | 150 | 23 shows, random, faceless only | the maintainer, blind, pass/fail rules written first |
 
 One grader throughout. Where two readings were plausible the rules on
-the grading page decided, and the notes record the toss-ups.
+the grading page decided, and the notes record the toss-ups. The search
+measurement is the exception: a model judged 250 queries and the
+maintainer audited 374 of its judgments; the two agreed on the ranking
+of every system.
 
 ## Known limits
 
@@ -171,8 +186,9 @@ the grading page decided, and the notes record the toss-ups.
   those, which is why the head method exists.
 - **Head and shoulders versus close-up** is the boundary behind most
   shot-size errors, on faced and faceless stills alike.
-- **Close-ups of objects, hands and food** are read as wide by every
-  classifier tried; they are left blank or listed for you.
+- **Close-ups of objects, hands and food** are mostly read as wide by
+  the classifiers tried, and about half of the stills still blank after
+  every method are these; they are left blank or listed for you.
 - **Dutch and overhead** angles are found about a third of the time.
 - **Title cards and text** are found by the tag reader and listed as
   **text on the frame**; a title over a real shot keeps its labels.
@@ -181,8 +197,9 @@ the grading page decided, and the notes record the toss-ups.
 Getting past these means a model trained on this tool's own
 definitions, on stills graded in the gallery; nothing available off the
 shelf does it. Until then the override mechanisms are the answer: every
-label can be corrected, every guess waits for you, and the label report
-under Admin measures the models on your own reviews.
+label can be corrected, a head-guessed size waits for you, a scenery
+guess is listed when you turn that chip on, and the label report under
+Admin measures the models on your own reviews.
 
 ## Models and licenses
 

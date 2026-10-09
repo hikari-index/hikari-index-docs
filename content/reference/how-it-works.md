@@ -100,8 +100,9 @@ Every figure below comes from the maintainer's own library: a few
 hundred stills from a handful of shows, graded blind by one person.
 Your shows, your art styles and your eye will differ, so treat the
 numbers as the shape of the thing, not a promise. That is also why
-every label can be corrected, every guess waits for you, and the label
-report measures the models on your own reviews rather than on these.
+every label can be corrected, a head-guessed size waits for you, and
+the label report measures the models on your own reviews rather than
+on these.
 
 The short version: **color, palette, tags and mood search are the
 strong part**; they are what the tool was built for and they are right
