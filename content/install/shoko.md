@@ -35,15 +35,25 @@ talks to the API.
 
 ## 2. Its API key
 
-> **Warning** Shoko's docs do not cover making a key this way; this step
-> is ours. It sends the user's password to Shoko, in the clear unless
-> Shoko is behind HTTPS, so do it on your own network. Anyone who holds
-> the key can read your Shoko library as that user, so keep it in the one
-> file below and nowhere else.
+> **Before you start.** This step talks to Shoko's API directly, which
+> Shoko's own docs do not cover; the steps here are ours. Only go the
+> command-line way if you are comfortable sending a request from a
+> terminal and reading the answer. If you are not, use **Shoko's own
+> API page** (the second route below): the same two calls, made from a
+> browser form, and no less supported than the commands. Neither route
+> changes anything in your Shoko install; each makes, or later removes,
+> one key for the one user you created.
+>
+> Either way the call sends that user's password to Shoko, in the clear
+> unless Shoko is behind HTTPS, so do it on your own network. Anyone who
+> holds the key can read your Shoko library as that user, so keep it in
+> the one file below and nowhere else.
 
 Shoko hands a user a key when you sign in to its API with that user's
-name and password. No admin key is involved. From any machine that can
-reach Shoko (the address is an example; 8111 is Shoko's usual port):
+name and password. No admin key is involved.
+
+**From a command line**, on any machine that can reach Shoko (the
+address is an example; 8111 is Shoko's usual port):
 
 ```bash
 curl -s -H "Content-Type: application/json" -d '{"user":"hikari-index","pass":"THE-PASSWORD","device":"hikari-index"}' http://192.0.2.20:8111/api/auth
@@ -59,11 +69,13 @@ The answer is `{"apikey":"..."}` (PowerShell shows a small table with one
 `apikey` row). `device` is only a label; it is how the key is named in
 Shoko's list of keys.
 
-**Or from Shoko's own API page**, with no command line: open
+**From Shoko's own API page**, with no command line: open
 `http://192.0.2.20:8111/swagger` in a browser, find **POST /api/auth**
 under **Authentication**, choose **Try it out**, replace the example body
 with the same three fields (`user`, `pass`, `device`), and choose
-**Execute**. The key is in the response body.
+**Execute**. The key is in the response body. This page is part of
+every Shoko Server; it is only our docs that do not walk through it
+screen by screen.
 
 Put the key, alone, in a file named `shoko-api-key` inside a folder named
 `secrets` beside `compose.yaml` (or wherever `HIKARI_SECRETS` points). The
@@ -82,7 +94,9 @@ curl -s -X DELETE -H "apikey: THE-KEY" -H "Content-Type: application/json" -d '"
 Invoke-RestMethod -Method Delete -Uri http://192.0.2.20:8111/api/auth -Headers @{ apikey = 'THE-KEY' } -ContentType 'application/json' -Body (ConvertTo-Json 'THE-KEY')
 ```
 
-Then make a new one as above.
+From the API page instead: **DELETE /api/auth** under
+**Authentication**, with the key both in the `apikey` field at the top
+(**Authorize**) and as the body. Then make a new one as above.
 
 ## 3. Tell the gallery where Shoko is
 
