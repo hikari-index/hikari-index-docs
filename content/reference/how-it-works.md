@@ -100,8 +100,9 @@ Every figure below comes from the maintainer's own library: a few
 hundred stills from a handful of shows, graded blind by one person.
 Your shows, your art styles and your eye will differ, so treat the
 numbers as the shape of the thing, not a promise. That is also why
-every label can be corrected, every guess waits for you, and the label
-report measures the models on your own reviews rather than on these.
+every label can be corrected, a head-guessed size waits for you, and
+the label report measures the models on your own reviews rather than
+on these.
 
 The short version: **color, palette, tags and mood search are the
 strong part**; they are what the tool was built for and they are right
@@ -136,6 +137,8 @@ checking; yours may be far fewer or far more.
 
 Every reason on Worth a look is evidence, not a verdict, and the label
 report under Admin shows how often your reviews agreed with each source.
+The full account, label by label with the samples behind each number, is
+on [How the labels are made](labels.md).
 None of these models was trained on this tool's own definitions, so the
 remaining errors are a boundary (head and shoulders against close-up,
 object close-ups) that another cut-off does not fix.
