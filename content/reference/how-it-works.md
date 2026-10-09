@@ -21,8 +21,9 @@ goes further: what is on disk, and worked examples of changing it.
   the files. It finds the shots and pulls frames, and later makes the web
   images. It is the only part that opens source video.
 - **The analyze worker.** It runs the models: tags for what is in a
-  frame, faces for how it is framed, an image vector for likeness and
-  mood search, and the picker that chooses the final set. It needs a GPU
+  frame, faces and heads for how it is framed, a camera-angle classifier,
+  an image vector for likeness and mood search, and the picker that
+  chooses the final set. It needs a GPU
   to be quick and a CPU to be possible. It never sees your video, only
   the frames the first stage prepared.
 - **The text encoder.** A small service that turns a typed phrase into
@@ -88,7 +89,9 @@ pick without touching your review.
   characters or people. They were trained on anime; on anything else the
   labels are unmeasured.
 - A label comes from a fixed list that includes "unknown". A model with
-  no evidence says so instead of guessing.
+  no evidence says so instead of guessing. The one guess the tool makes,
+  a shot size from a head where no face was found, is a suggestion that
+  waits for you (below).
 
 ## What the tool guesses, and what it holds back
 

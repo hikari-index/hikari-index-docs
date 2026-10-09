@@ -49,7 +49,10 @@ from the source, run `docker compose build` instead of `docker compose
 pull`.
 
 The gallery applies any database changes itself when it starts. Runs
-already on disk stay readable by newer versions.
+already on disk stay readable by newer versions. A release that adds or
+improves a label changes nothing on works already imported: new labels
+reach a work when its analysis runs again (**Re-run** on Jobs, or
+**Re-run every finished work**; see [The pool and re-runs](../use/pool.md)).
 
 With the GPU analyze worker, rebuild it after `git pull`:
 

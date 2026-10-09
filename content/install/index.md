@@ -1,18 +1,16 @@
 ---
 title: Install
-description: Install Hikari Index on one machine from source with Docker Compose, then prove it works with one file.
+description: Install Hikari Index on one machine with Docker Compose from the published images, then prove it works with one file.
 ---
 
 # Install
 
-Everything on one machine, every image built from the source. This page
+Everything on one machine, from the published images (the GPU analyze
+worker is the one part you build). This page
 gets the install running and then proves it with one piece of video; the
 setup you keep is the same install, with Shoko connected and your real
 library behind it. Read [What you need](../requirements.md) first,
 especially the part about file permissions if you are on Linux or a NAS.
-
-> The source repository is not public yet, so the clone below will not
-> work for you until it is.
 
 ## 1. Get the source
 
@@ -52,7 +50,8 @@ Everything else in the file is optional and explained there and on the
 
 ## 3. Get the images
 
-The images are published, so this is a download (about 12 GB):
+The images are published, so this is a download (about 15 GB with the
+CPU analyze worker; see [What you need](../requirements.md#disk)):
 
 ```bash
 docker compose pull

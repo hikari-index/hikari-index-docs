@@ -66,6 +66,7 @@ set.
 | `HIKARI_WORKER_VERSION` | GPU worker: the image's tag and the version printed in its log. Set before building. |
 | `HIKARI_WORKER_STANDBY` | `1` makes it a fallback (CPU example only; see [the second-machine page](../install/second-machine.md)). |
 | `HIKARI_IMAGE_REPOSITORY` | CPU only: pull from a registry of yours instead of ghcr.io. |
+| `HIKARI_SHARE_VOLUME` | The Docker volume that holds the main machine's data share. Default `hikari-index-share`, the name the second-machine page creates. |
 
 ## HTTPS through a reverse proxy
 
