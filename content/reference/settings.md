@@ -66,6 +66,7 @@ set.
 | `HIKARI_WORKER_VERSION` | GPU worker: the image's tag and the version printed in its log. Set before building. |
 | `HIKARI_WORKER_STANDBY` | `1` makes it a fallback (CPU example only; see [the second-machine page](../install/second-machine.md)). |
 | `HIKARI_IMAGE_REPOSITORY` | CPU only: pull from a registry of yours instead of ghcr.io. |
+| `HIKARI_SHARE_VOLUME` | The Docker volume that holds the main machine's data share. Default `hikari-index-share`, the name the second-machine page creates. |
 
 ## HTTPS through a reverse proxy
 
@@ -78,8 +79,8 @@ time, so those pages fill in faster.
 
 Point the proxy at the gallery's port and set `HIKARI_ORIGIN` to the
 address people type, for example `https://hikari.home.example`, or the
-sign-in form will refuse them. The sign-in cookie is not yet marked as
-HTTPS-only; it works, it is just less strict than it should be.
+sign-in form will refuse them. The sign-in cookie is marked HTTPS-only
+when the gallery is reached over HTTPS, and not otherwise.
 
 The admin area is meant for your own network. Do not put an install
 where strangers can reach it.

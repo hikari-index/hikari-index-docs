@@ -10,9 +10,12 @@ them all on one machine, the one that has your video.
 
 ## The machine
 
-- **Docker with Compose**, on a 64-bit x86 machine (amd64). ARM machines,
-  including Apple Silicon, are not supported: the worker pins an amd64
-  FFmpeg build. Linux, or Docker Desktop on Windows.
+- **Docker with Compose**, on a 64-bit x86 machine (amd64). The two
+  workers are published for amd64 only (the one that reads video pins an
+  amd64 FFmpeg build), so the machine with your video must be amd64;
+  the gallery and the text encoder are also published for arm64, which
+  matters only if you spread the parts across machines. Linux, or Docker
+  Desktop on Windows.
 - **Your video**, on that machine or mounted there. It is mounted
   read-only into one container and nothing writes to it.
 - **Internet to install and update.** Installing downloads the published
@@ -56,11 +59,13 @@ problem.
 
 ## Disk
 
-**For the images: about 12 GB with the CPU analyze worker, about 24 GB
-with the GPU one**, measured on the built images, plus room for the build
-itself. The GPU worker is built on an 18 GB base that holds CUDA and the
-models; keep that base, because updates rebuild the GPU worker from it.
-The CPU worker is a 6 GB image of its own and never needs the base.
+**For the images: about 15 GB with the CPU analyze worker, about 27 GB
+with the GPU one**, measured on the 1.3.0 images, plus room for the GPU
+build itself. The GPU worker is built on an 18 GB base that holds CUDA
+and the models; keep that base, because updates rebuild the GPU worker
+from it. The CPU worker is a 9 GB image of its own and never needs the
+base. (1.3.0 added about 1.2 GB to each analyze worker for the
+camera-angle model.)
 
 **For the library**, measured on one 24-minute 1080p episode:
 
@@ -92,8 +97,8 @@ How long a 24-minute 1080p episode took on the maintainer's machines:
 | Stage | Time |
 |---|---|
 | Find shots and pull frames | about 4 minutes |
-| Describe and pick, RTX 4070 | about 2.5 minutes |
-| Describe and pick, CPU (Core i7-13700K, all 24 threads) | about 4 minutes |
+| Describe and pick, RTX 4070 | about 2.5 minutes on 1.2.0; about 5 on 1.3.0, which runs two more models |
+| Describe and pick, CPU (Core i7-13700K, all 24 threads) | about 4 minutes on 1.2.0; not re-measured on 1.3.0 (on a 4-core machine the camera-angle model alone took about 0.7 seconds a frame) |
 | Web images | about 2.5 minutes |
 
 And one CPU run held to **4 cores** of the same processor, to get closer to

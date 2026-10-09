@@ -94,7 +94,11 @@ visible" never do.
 The labels come from models trained on anime. They describe scenes and
 framing; they never identify characters or people. Each is a proposal:
 when a model has no evidence it leaves the label out rather than guess,
-and you can [correct any of them](workbench.md#correcting-labels).
+and you can [correct any of them](workbench.md#correcting-labels). The
+one guess the tool does make, a shot size read from a head where no face
+was found, is held back as a suggestion for you to accept and never
+shown here until you do. [How the labels are made](../reference/labels.md)
+has the method and the measured rate for each label.
 
 On anything that is not anime, like the Blender films in these
 screenshots, the labels are unmeasured. The palettes and Similar work

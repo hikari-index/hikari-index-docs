@@ -57,7 +57,12 @@ Shoko's title again, for an episode Shoko had no title for at the time.
 
 - **Labels**: each family shows the model's proposal. Leave it on **as
   proposed**, pick another value, pick **none** to clear it, or type a
-  new value. A typed value becomes a choice for every other still.
+  new value. A typed value becomes a choice for every other still. Where
+  no face was found and a head suggests a shot size, the choice **accept
+  the suggestion** is there too; under the shot size, a note says when
+  the same person's head disagrees with the face, or when the size was a
+  weak guess. **Labels checked** certifies the labels for the
+  [label report](review.md#checking-labels).
 - **Tags**: untick a tag to remove it; type more, separated by commas.
 - **Review**: set unreviewed, keep or cull, lock it, hide it, and leave a
   note for yourself.

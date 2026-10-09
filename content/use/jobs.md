@@ -15,6 +15,13 @@ can wait behind a long one. Different workers run at the same time.
 
 ![The Jobs page with one re-run in progress](/shots/jobs.avif "Jobs during a re-run of Charge: the bar's first segment is the stage running now.")
 
+## Needs you
+
+Stages that stopped and wait for a person: gave up after three tries,
+blocked on a file that moved, or refused. The reason is on the row, with
+**Retry** or **Remove…**. [When something
+stops](../run/troubleshooting.md) has what each reason means.
+
 ## Running
 
 What a machine is doing now: the work, the stage, which worker took it,
@@ -48,6 +55,15 @@ work that can be re-run, each at its own still count. **Describe the
 palettes again** runs the palette step over every finished work's stills
 again, for when the palette tool has changed. Both skip works that are
 busy.
+
+## Cancelled
+
+Work you cancelled, kept for the record. A re-run cancelled while it
+was still waiting leaves the work's finished run as it was, with its
+Re-run button; nothing is lost. One cancelled after its analysis stage
+had already finished leaves the work without a Re-run button (neither
+the half-done run nor the old one counts as finished); run it through
+again from Onboard if you need it re-picked.
 
 ## When something goes wrong
 

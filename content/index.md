@@ -31,8 +31,8 @@ likeness search work the same, and the labels are unmeasured.
 
 1. [What you need](requirements.md): a machine with Docker and your video,
    somewhere to run the models, and ideally Shoko.
-2. [Install](install/index.md): everything on one machine, built from
-   source.
+2. [Install](install/index.md): everything on one machine, from the
+   published images.
 3. [Connect Shoko](install/shoko.md), if you use it. You then pick series
    and episodes from a list and never have to type a path.
 4. [Adding work](use/adding.md) and [reviewing](use/review.md) once it runs.
@@ -44,8 +44,7 @@ likeness search work the same, and the labels are unmeasured.
   film, and it never looks through the rest of your library.
 - Not a character or face recognizer. The models describe scenes and
   framing; they never name anyone.
-- Not finished. It is one person's working install, opened up. Images are
-  not on a registry yet, so you build them yourself.
+- Not finished. It is one person's working install, opened up.
 
 ## Status
 
