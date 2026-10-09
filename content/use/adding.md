@@ -75,6 +75,30 @@ The pick chooses from every frame the extraction kept, so a bigger count
 costs no extra decoding. You can change it later with a
 [re-run](pool.md).
 
+## Holding the opening and ending
+
+Every way in also offers **Hold the opening and ending, if the file has
+chapters for them**, off by default. Many releases carry chapter markers
+so a player can skip the opening and the ending. With the box ticked,
+the extraction reads them and holds the frames inside any chapter that
+reads as one: a chapter named OP, Opening, ED, Ending, Outro or Credits,
+or one 85 to 95 seconds long within six minutes of the start or the end
+(the length every release looked at uses, which catches shows whose
+chapters are only numbered). "Intro", "Avant" and "Prologue" never count
+by name: in one release group they are the cold open, in another the
+opening.
+
+Held is not dropped. The frames are extracted into the [pool](pool.md)
+like any other, marked **held: opening** or **held: ending**, and the
+pick leaves them alone; lock one to bring it in. A file without chapters,
+or with chapters that name nothing and fit no length, holds nothing and
+runs as if the box were clear. The run record (`audit/chapters.json`)
+lists every chapter and what was decided.
+
+This is a per-file choice made at onboarding; a re-run keeps it. On the
+maintainer's library, chapters named the opening or ending in about two
+thirds of files, and about one picked still in nine fell inside one.
+
 ## What runs
 
 Each work goes through four stages:
