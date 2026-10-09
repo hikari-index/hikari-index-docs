@@ -79,8 +79,8 @@ time, so those pages fill in faster.
 
 Point the proxy at the gallery's port and set `HIKARI_ORIGIN` to the
 address people type, for example `https://hikari.home.example`, or the
-sign-in form will refuse them. The sign-in cookie is not yet marked as
-HTTPS-only; it works, it is just less strict than it should be.
+sign-in form will refuse them. The sign-in cookie is marked HTTPS-only
+when the gallery is reached over HTTPS, and not otherwise.
 
 The admin area is meant for your own network. Do not put an install
 where strangers can reach it.

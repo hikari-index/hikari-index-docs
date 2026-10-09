@@ -33,8 +33,9 @@ A re-run can also change how many stills a work gets: choose **Fewer**,
 **Balanced** or **More** beside the button.
 
 Your marks survive. A still the new set drops is deleted unless you had
-kept, culled, locked, hidden or corrected it (a note on its own does not
-count); those stay under **not picked**, so the decision is not lost. To bring one of
+kept, culled, locked, hidden or corrected it, or checked its labels (a
+note on its own does not count); those stay under **not picked**, so
+the decision is not lost. To bring one of
 those back, lock it and re-run again.
 
 **Re-run every finished work**, above the Done list, does the same for

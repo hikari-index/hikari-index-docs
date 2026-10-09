@@ -58,8 +58,12 @@ busy.
 
 ## Cancelled
 
-Work you cancelled, kept for the record. A cancelled re-run leaves the
-work's finished run as it was, with its Re-run button; nothing is lost.
+Work you cancelled, kept for the record. A re-run cancelled while it
+was still waiting leaves the work's finished run as it was, with its
+Re-run button; nothing is lost. One cancelled after its analysis stage
+had already finished leaves the work without a Re-run button (neither
+the half-done run nor the old one counts as finished); run it through
+again from Onboard if you need it re-picked.
 
 ## When something goes wrong
 
