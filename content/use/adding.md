@@ -97,7 +97,10 @@ lists every chapter and what was decided.
 
 This is a per-file choice made at onboarding; a re-run keeps it. On the
 maintainer's library, chapters named the opening or ending in about two
-thirds of files, and about one picked still in nine fell inside one.
+thirds of files, and about one picked still in nine fell inside one. On
+the first season run half with the box and half without, the held
+episodes picked no still from their opening or ending chapters against
+about one in seven for the others, at the same still count.
 
 ## What runs
 

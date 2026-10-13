@@ -49,4 +49,4 @@ likeness search work the same, and the labels are unmeasured.
 ## Status
 
 The source is at [github.com/hikari-index/hikari-index](https://github.com/hikari-index/hikari-index)
-under the AGPL-3.0-or-later. Current version is v1.3.0.
+under the AGPL-3.0-or-later. Current version is v1.4.0.
