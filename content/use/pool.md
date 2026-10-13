@@ -22,6 +22,12 @@ The extraction keeps more frames than the picker uses. The rest are the
 of it is running and its extra frames have not been
 [discarded](finishing.md).
 
+A frame marked **held: opening** or **held: ending** sat inside a chapter
+the extraction read as the opening or ending, because the work was
+[onboarded with that box ticked](adding.md#holding-the-opening-and-ending).
+The pick was told to leave it; it is in the pool like any other frame,
+and locking it brings it in the same way.
+
 ## What a re-run does
 
 It describes the frames and picks the stills again, then remakes the web

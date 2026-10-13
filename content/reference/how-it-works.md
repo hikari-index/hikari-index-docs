@@ -92,6 +92,9 @@ pick without touching your review.
   no evidence says so instead of guessing. The one guess the tool makes,
   a shot size from a head where no face was found, is a suggestion that
   waits for you (below).
+- Nothing is thrown away on a hunch. Frames inside an opening or ending
+  chapter are held out of the pick only when you asked for it at
+  onboarding, and even then they stay in the pool for you to bring in.
 
 ## What the tool guesses, and what it holds back
 
