@@ -23,18 +23,19 @@ whose settings changed.
 |---|---|
 | `HIKARI_GALLERY_PORT` | The port the gallery listens on. Default `5183`. |
 | `HIKARI_GALLERY_BIND` | The address it listens on. Default `0.0.0.0` (every network the machine is on); `127.0.0.1` keeps it to this machine. |
-| `HIKARI_DB_DATA` | A folder for the database instead of a Docker volume. |
-| `HIKARI_DATA` | A folder for the run records and frames instead of a Docker volume. Must be writable by user id 10001. Needed for a second machine. |
-| `HIKARI_IMAGES` | A folder for the web images instead of a Docker volume. Must be writable by user id 10001. |
+| `HIKARI_DB_DATA` | A folder for the database instead of a Docker volume. Default `hikari-db`, a Docker volume. |
+| `HIKARI_DATA` | A folder for the run records and frames instead of a Docker volume. Must be writable by user id 10001. Needed for a second machine. Default `hikari-data`, a Docker volume. |
+| `HIKARI_IMAGES` | A folder for the web images instead of a Docker volume. Must be writable by user id 10001. Default `hikari-images`, a Docker volume. |
 | `HIKARI_SHOKO_BASE_URL` | Shoko's address, for example `http://192.0.2.20:8111`. Without it, Shoko is off. See [Connect Shoko](../install/shoko.md). |
 | `HIKARI_SECRETS` | The folder holding the file `shoko-api-key`. Default `./secrets`. |
 | `HIKARI_SOURCE_ROOTS` | Names for folders inside the video mount, as `name=/path` pairs separated by commas. Default `library=/source`. With Shoko, the name is Shoko's folder number. |
 | `HIKARI_ANALYZE_STANDBY` | `1` makes this machine's analyze worker a fallback: it takes a stage only when no regular (non-standby) analyze worker has checked in for ten minutes. |
-| `HIKARI_WORKER_HOURS` | Start the worker's stages (extraction, web images, deletions) only between these hours, for example `01-07`. A stage already running finishes. The hours are the container's clock, which is UTC. Empty means any time. |
+| `HIKARI_WORKER_HOURS` | Start the worker's stages (extraction, web images, deletions) only between these hours, for example `01-07`. A stage already running finishes. The hours are on the clock `HIKARI_TZ` names. Empty means any time. |
+| `HIKARI_TZ` | The time zone `HIKARI_WORKER_HOURS` and the times in the logs are in, for example `America/New_York`. Unset, UTC. |
 | `HIKARI_POLL_SECONDS` | How often an idle worker asks for work. Default `30`. |
 | `HIKARI_ADMIN_LINK` | `0` hides the **Admin** link in the header. It hides the link only; `/admin` still answers. Default `1`. |
 | `HIKARI_NOTICE` | A line of your own text at the foot of every page, for example the credits for openly licensed video you add. Plain text; web addresses in it become links. Unset, there is no footer. |
-| `HIKARI_VERSION` | Which published images to run: `latest` (the default, the newest release), a release number such as `1.0.0` to stay on it, or `dev` for the newest build of the main branch. Set it, then `docker compose pull`. |
+| `HIKARI_VERSION` | Which published images to run: `latest` (the newest release), a release number such as `1.0.0` to stay on it, or `dev` for the newest build of the main branch. Default `latest`. Set it, then `docker compose pull`. |
 
 ## Made for you by the first-run step
 
@@ -60,12 +61,14 @@ set.
 | Setting | What it is |
 |---|---|
 | `HIKARI_GALLERY_URL` | The main machine's gallery, by address and port. |
-| `HIKARI_WORKER_ID` | This worker's name on Jobs. Must match its pair in the main machine's `HIKARI_WORKER_TOKENS`. |
+| `HIKARI_WORKER_ID` | This worker's name on Jobs. Must match its pair in the main machine's `HIKARI_WORKER_TOKENS`. Default `analyze`. |
 | `HIKARI_WORKER_TOKEN` | Its token, the other half of that pair. |
 | `HIKARI_VERSION` | CPU worker: the published version to pull, the same as the main machine's. Default `latest`. |
 | `HIKARI_WORKER_VERSION` | GPU worker: the image's tag and the version printed in its log. Set before building. |
-| `HIKARI_WORKER_STANDBY` | `1` makes it a fallback (CPU example only; see [the second-machine page](../install/second-machine.md)). |
-| `HIKARI_IMAGE_REPOSITORY` | CPU only: pull from a registry of yours instead of ghcr.io. |
+| `HIKARI_WORKER_STANDBY` | `1` makes it a fallback (CPU example only; see [the second-machine page](../install/second-machine.md)). On the main machine the same setting is `HIKARI_ANALYZE_STANDBY`. |
+| `HIKARI_IMAGE_REPOSITORY` | CPU only: pull from a registry of yours instead of ghcr.io. Default `ghcr.io/hikari-index/cpu-worker`. |
+| `HIKARI_POLL_SECONDS` | How often it asks for work when idle. Default `30`. |
+| `HIKARI_TZ` | The time zone the times in its log are in, for example `America/New_York`. Unset, UTC. |
 | `HIKARI_SHARE_VOLUME` | The Docker volume that holds the main machine's data share. Default `hikari-index-share`, the name the second-machine page creates. |
 
 ## HTTPS through a reverse proxy
