@@ -1,13 +1,21 @@
 ---
 title: Settings
-description: Every setting in .env, what it does, and its default.
+description: Every setting, what it does, and its default.
 ---
 
 # Settings
 
-All settings live in `.env` beside `compose.yaml`. After changing one,
-`docker compose up -d` applies it; Compose recreates only the containers
-whose settings changed.
+A setting has one name and one default, whichever way you installed.
+Where you type it differs:
+
+- **Docker Compose:** a line in `.env` beside `compose.yaml`. After
+  changing one, `docker compose up -d` applies it; Compose recreates
+  only the containers whose settings changed.
+- **unRAID:** a field on the container's template; **Apply** restarts
+  the container with it. [On unRAID](../install/unraid.md#the-settings-as-template-fields)
+  says which field is which setting, and which of the settings below
+  exist only for Compose (the folders, the port, the profile and the
+  version are template fields of their own there).
 
 ## Yours to set
 
@@ -24,6 +32,7 @@ whose settings changed.
 | `HIKARI_GALLERY_PORT` | The port the gallery listens on. Default `5183`. |
 | `HIKARI_GALLERY_BIND` | The address it listens on. Default `0.0.0.0` (every network the machine is on); `127.0.0.1` keeps it to this machine. |
 | `HIKARI_DB_DATA` | A folder for the database instead of a Docker volume. Default `hikari-db`, a Docker volume. |
+| `HIKARI_BACKUPS` | A folder for the [daily database dumps](../run/backups.md#the-daily-database-dump) instead of a Docker volume. Default `hikari-backups`, a Docker volume. |
 | `HIKARI_DATA` | A folder for the run records and frames instead of a Docker volume. Must be writable by user id 10001. Needed for a second machine. Default `hikari-data`, a Docker volume. |
 | `HIKARI_IMAGES` | A folder for the web images instead of a Docker volume. Must be writable by user id 10001. Default `hikari-images`, a Docker volume. |
 | `HIKARI_SHOKO_BASE_URL` | Shoko's address, for example `http://192.0.2.20:8111`. Without it, Shoko is off. See [Connect Shoko](../install/shoko.md). |

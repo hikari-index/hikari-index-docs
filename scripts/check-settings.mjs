@@ -12,6 +12,9 @@
 //     above it for the rest), and a row for nothing else;
 //   - a row says "Default `x`" with the list's default, and a setting with
 //     no default says no "Default `...`" at all;
+//   - content/install/unraid.md names every setting the all-in-one
+//     container takes, and where its table gives one a default, it is the
+//     list's for that route;
 //   - with HIKARI_TOOL_SETTINGS=<path to the tool's settings.json>, that
 //     this copy is the same file (the publish workflow passes the newest
 //     release's).
@@ -63,6 +66,20 @@ for (const [name, where] of Object.entries(routes)) {
     if (!s.default && stated.length) {
       problems.push(`${where}: the row for ${setting} says "Default \`${stated[0]}\`"; settings.json gives it none`);
     }
+  }
+}
+
+// The unRAID page: the all-in-one container's settings.
+const unraid = read("content/install/unraid.md");
+for (const s of settings.filter((s) => s.routes.includes("all-in-one"))) {
+  if (!unraid.includes(`\`${s.name}\``)) {
+    problems.push(`settings.json lists ${s.name} for the all-in-one, and the unRAID page never names it`);
+    continue;
+  }
+  const row = unraid.split("\n").find((line) => new RegExp(`^\\|[^|]*\\|\\s*\`${s.name}\`\\s*\\|`).test(line));
+  const wanted = s.default_on?.["all-in-one"] ?? s.default;
+  if (row && wanted && !row.split("|")[3].includes(`\`${wanted}\``)) {
+    problems.push(`the unRAID page's row for ${s.name} must give its default, \`${wanted}\``);
   }
 }
 
