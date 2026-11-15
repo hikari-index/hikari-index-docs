@@ -52,9 +52,9 @@ The first start prints your sign-in:
 If you lose it, put an empty file named `reset-admin-password` in the
 Config folder and restart the container: the log shows a new one.
 
-If the container stops straight away, the last line of its log says what
-to change, for example a folder that is not set or a Gallery address
-that is not a web address.
+If the container stops straight away, a line near the end of its log
+that starts `[hikari] cannot start:` says what to change, for example a
+folder that is not set or a Gallery address that is not a web address.
 
 ## 3. Install hikari-index-analyze
 
