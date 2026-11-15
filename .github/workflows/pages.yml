@@ -27,6 +27,19 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # The settings page is held to the tool's own list of settings
+      # (settings.json in hikari-index/hikari-index) as of its newest
+      # published release; scripts/check-settings.mjs does the comparing.
+      # Nothing is published when that file cannot be fetched: a release
+      # without it means these docs describe a version not released yet.
+      - name: The tool's settings list at its newest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="$(gh api repos/hikari-index/hikari-index/releases/latest --jq .tag_name)"
+          test -n "$tag"
+          gh api "repos/hikari-index/hikari-index/contents/settings.json?ref=$tag" -H "Accept: application/vnd.github.raw+json" > "$RUNNER_TEMP/tool-settings.json"             || { echo "could not fetch settings.json from release $tag of the tool; if that release has none, these docs are ahead of it"; exit 1; }
+          echo "HIKARI_TOOL_SETTINGS=$RUNNER_TEMP/tool-settings.json" >> "$GITHUB_ENV"
       # The site has its own domain (docs.hikari-index.moe, set in the
       # repository's Pages settings), so it is served from the root. A
       # project-page address would need BASE_PATH: /hikari-index-docs.
