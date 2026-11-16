@@ -193,8 +193,10 @@ What one container cannot do the way four can:
 - The database is inside the container and is not reachable from outside
   it. It is the same PostgreSQL and pgvector version as the Compose
   install's, installed from packages. Its folder cannot be swapped with
-  a Compose install's; moving between the two is a dump from one and a
-  restore into the other.
+  a Compose install's, or with a separate database container's; moving
+  between them is a dump from one and a restore into the other. Given a
+  Config folder that already holds another install's database, the
+  container stops before it touches anything and its log says so.
 - The database's version moves with the container's, in the one update.
   Before the first start on a new version the container makes one extra
   dump (`before-...` in `backups/`, five kept), which the Compose
