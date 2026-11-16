@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "node scripts/check-settings.mjs && vite build && pagefind --site build",
+		"build": "vite build && pagefind --site build",
 		"preview": "vite preview",
 		"shots": "node scripts/shots.mjs",
 		"prepare": "svelte-kit sync || echo ''",

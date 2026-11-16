@@ -16,11 +16,11 @@ Two templates:
   [GPU worker on another machine](second-machine.md) instead.
 
 It is the same software as the [Compose install](index.md): the same
-programs from the same images, the same settings under the same names
-with the same defaults, the same daily database dump. Everything under
-Use and Reference applies as written. What differs is where you type
-things, and a short list of things one container cannot do the way four
-can; both are [at the end of this page](#what-is-different-from-the-compose-install).
+programs from the same images, the same settings under the same names,
+the same daily database dump. Everything under Use and Reference applies
+as written. What differs is where you type things, and a short list of
+things one container does differently from four; both are
+[at the end of this page](#what-is-different-from-the-compose-install).
 Read [What you need](../requirements.md) first.
 
 ## 1. Install hikari-index
@@ -89,6 +89,7 @@ more settings**. A field left empty means the default.
 | **Shoko address** | `HIKARI_SHOKO_BASE_URL` | empty: Shoko is off |
 | **Source folders** | `HIKARI_SOURCE_ROOTS` | `library=/source` |
 | **Working hours** | `HIKARI_WORKER_HOURS` | empty: any time |
+| **Time zone** | `HIKARI_TZ` | empty: this server's own time zone |
 | **Check for work every** | `HIKARI_POLL_SECONDS` | `30` |
 | **More analyze workers** | `HIKARI_WORKER_TOKENS` | empty |
 | **Footer notice** | `HIKARI_NOTICE` | empty |
@@ -97,13 +98,14 @@ more settings**. A field left empty means the default.
 | **PUID**, **PGID** | `PUID`, `PGID` | `99`, `100` on the template (unRAID's own user) |
 
 **Working hours** are on your server's clock: unRAID gives the container
-its time zone. To use another, add a variable named `HIKARI_TZ`, as on
-any install.
+its time zone. To use another, set **Time zone**. (On the Compose
+install an empty time zone is UTC.)
 
 **More analyze workers** takes the `name:token` pairs of workers on
-other machines. The analyze container on this server is not in that
-list: the hikari-index container makes its token and gives it to the
-gallery itself, and it refuses to start if the list names `analyze` too.
+other machines. The analyze container on this server needs nothing
+there: the hikari-index container makes its token and gives it to the
+gallery itself. A different token for the name `analyze` in the list
+stops the container, with a line that says so.
 
 The passwords and tokens the Compose install's first-run step prints
 (`HIKARI_DB_PASSWORD`, `HIKARI_ADMIN_PASSWORD_HASH`,
@@ -130,13 +132,23 @@ The container dumps the database once a day into `backups/` in the
 Config folder and keeps fourteen, as every install does
 ([Backups](../run/backups.md) has what the dump is good for and how to
 restore one). To restore one here, open the hikari-index container's
-**Console** and run, with the file's date:
+**Console**. First stop the two programs that write to the database:
+
+```bash
+/command/s6-svc -wD -d /run/service/worker
+```
+
+```bash
+/command/s6-svc -wD -d /run/service/gallery
+```
+
+Then load the dump, with the file's date:
 
 ```bash
 pg_restore -U hikari -d hikari --no-owner --clean --if-exists --exit-on-error /config/backups/hikari-2026-11-15.dump
 ```
 
-then restart the container.
+Then restart the container, which starts both again.
 
 Those dumps sit on the same disk as the database, so they guard against
 a bad update or a mistake, not a dead disk: include the Config folder,

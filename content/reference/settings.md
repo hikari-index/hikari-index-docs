@@ -5,17 +5,17 @@ description: Every setting, what it does, and its default.
 
 # Settings
 
-A setting has one name and one default, whichever way you installed.
-Where you type it differs:
+Where you type a setting depends on how you installed:
 
 - **Docker Compose:** a line in `.env` beside `compose.yaml`. After
   changing one, `docker compose up -d` applies it; Compose recreates
   only the containers whose settings changed.
 - **unRAID:** a field on the container's template; **Apply** restarts
   the container with it. [On unRAID](../install/unraid.md#the-settings-as-template-fields)
-  says which field is which setting, and which of the settings below
-  exist only for Compose (the folders, the port, the profile and the
-  version are template fields of their own there).
+  says which field is which setting, where a default differs there, and
+  which of the settings below exist only for Compose (the folders, the
+  port, the profile and the version are template fields of their own
+  there).
 
 ## Yours to set
 

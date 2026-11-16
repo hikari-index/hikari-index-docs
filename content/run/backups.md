@@ -22,14 +22,14 @@ remove the work and onboard it again, which loses your review of it.
 
 ## The daily database dump
 
-Every install dumps the database once a day and keeps the last fourteen,
-named by date (`hikari-2026-11-15.dump`, the UTC date). With Docker
-Compose they are in the Docker volume `hikari-backups`, or in the folder
-`HIKARI_BACKUPS` names; [on unRAID](../install/unraid.md#backups) they
-are in `backups/` in the Config folder. With Docker Compose the files
-belong to root and only root can read them, so copying them out of a
-folder of yours takes `sudo`; on unRAID they belong to the user the
-container runs as.
+The Compose install and the unRAID container dump the database once a
+day and keep the last fourteen, named by date (`hikari-2026-11-15.dump`,
+the UTC date). With Docker Compose they are in the Docker volume
+`hikari-backups`, or in the folder `HIKARI_BACKUPS` names;
+[on unRAID](../install/unraid.md#backups) they are in `backups/` in the
+Config folder. With Docker Compose the files belong to root and only
+root can read them, so copying them out of a folder of yours takes
+`sudo`; on unRAID they belong to the user the container runs as.
 
 It is there for the day you cull the wrong season or an update goes
 badly, and it is not a backup: it sits on the same disk as the database,
