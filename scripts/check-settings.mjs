@@ -20,7 +20,7 @@
 //     release's).
 //
 // Not checked: the rest of a row's wording, or any other page.
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8").replace(/\r\n/g, "\n");
 const copy = read("settings.json");
@@ -69,9 +69,12 @@ for (const [name, where] of Object.entries(routes)) {
   }
 }
 
-// The unRAID page: the all-in-one container's settings.
-const unraid = read("content/install/unraid.md");
-for (const s of settings.filter((s) => s.routes.includes("all-in-one"))) {
+// The unRAID page: the all-in-one container's settings. The page comes
+// with the Community Apps listing, after the release that carries the
+// image, so until it exists there is nothing to hold to the list.
+const unraidPage = new URL("../content/install/unraid.md", import.meta.url);
+const unraid = existsSync(unraidPage) ? read("content/install/unraid.md") : null;
+for (const s of unraid === null ? [] : settings.filter((s) => s.routes.includes("all-in-one"))) {
   if (!unraid.includes(`\`${s.name}\``)) {
     problems.push(`settings.json lists ${s.name} for the all-in-one, and the unRAID page never names it`);
     continue;

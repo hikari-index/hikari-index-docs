@@ -76,9 +76,8 @@ update it to the same commit and rebuild it as well.
 The database is PostgreSQL 18 with the pgvector add-on. When either gets
 a newer version, **you do nothing beyond the update itself.**
 
-- **With Docker Compose or the all-in-one container,** the database
-  version changes only when a release changes it, and arrives with the
-  update above.
+- **With Docker Compose,** the database version changes only when a
+  release changes it, and arrives with the update above.
 - **With a database container of your own** (for example unRAID's
   pgvector-18 app), update it when you like, as long as it stays on
   PostgreSQL 18.

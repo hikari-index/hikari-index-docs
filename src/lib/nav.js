@@ -3,7 +3,7 @@
 // own front matter, so a page is named in one place.
 export const groups = [
   { title: "Start", pages: ["", "requirements"] },
-  { title: "Install", pages: ["install", "install/unraid", "install/shoko", "install/second-machine"] },
+  { title: "Install", pages: ["install", "install/shoko", "install/second-machine"] },
   {
     title: "Use",
     pages: ["use/browsing", "use/search", "use/adding", "use/jobs", "use/review", "use/workbench", "use/pool", "use/finishing"],
