@@ -71,6 +71,27 @@ docker compose build inference-base
 If you run an analyze worker on [a second machine](../install/second-machine.md),
 update it to the same commit and rebuild it as well.
 
+### The order to update in
+
+With Docker Compose there is nothing to order: `docker compose up -d`
+restarts the parts in the order they need.
+
+If you update containers one at a time (a container template for each
+part, or a worker on another machine), use the same order Compose does:
+
+1. the database, if you are updating it;
+2. the gallery, which is the part that changes the database's tables and
+   so goes before anything else that reads them;
+3. the worker that reads your video, the analyze worker and the text
+   encoder, in any order. A worker on another machine can come last.
+
+A stage a worker was running when you stopped it goes back to the queue
+and starts again; nothing is lost in the minutes the parts are on
+different versions. Do not leave them that way.
+
+This order is all a MINOR or PATCH release ever asks. If a release needs
+anything more, its notes say so under **Action needed**.
+
 ## The database
 
 The database is PostgreSQL 18 with the pgvector add-on. When either gets
@@ -85,7 +106,10 @@ a newer version, the update itself is meant to be all you do.
 A newer PostgreSQL 18 opens your existing data as it is. pgvector's own
 upgrade instructions add one step after its files are updated, a command
 run once inside the database; the gallery runs it for you each time it
-starts, so there is nothing to type. If it could not, the gallery's log
+starts, so there is nothing to type. That is why the database comes
+before the gallery in the order above: update the database container on
+its own and the step waits for the gallery's next start, so restart the
+gallery after it. If the step could not run, the gallery's log
 says so and why, and carries on with the version the database has.
 
 The one thing that is not automatic is a move to a new major version,
