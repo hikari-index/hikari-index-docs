@@ -173,8 +173,11 @@ What one container cannot do the way four can:
   others' files. Each is still given only its own settings and
   passwords, and your video is still mounted read-only.
 - There is one health status, the gallery's and the text encoder's
-  together, and one stop: the template gives the container two minutes
-  so the worker can hand back what it is doing.
+  together, and one stop. unRAID gives a container its **Docker Stop
+  Timeout** to stop (Settings, Docker; ten seconds unless you changed
+  it). In that time the worker hands back what it is doing and the
+  database shuts down; a stage that was running starts again at the next
+  start.
 - The database is inside the container and is not reachable from outside
   it. It is the same PostgreSQL and pgvector version as the Compose
   install's, installed from packages. Its folder cannot be swapped with
