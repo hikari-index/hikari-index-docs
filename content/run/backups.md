@@ -22,7 +22,7 @@ remove the work and onboard it again, which loses your review of it.
 
 ## The daily database dump
 
-Every install dumps the database once a day and keeps the last fourteen,
+The Compose install dumps the database once a day and keeps the last fourteen,
 named by date (`hikari-2026-11-15.dump`, the UTC date). They are in the
 Docker volume `hikari-backups`, or in the folder `HIKARI_BACKUPS` names.
 The files belong to root and only root can read them, so copying them

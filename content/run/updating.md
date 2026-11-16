@@ -74,7 +74,7 @@ update it to the same commit and rebuild it as well.
 ## The database
 
 The database is PostgreSQL 18 with the pgvector add-on. When either gets
-a newer version, **you do nothing beyond the update itself.**
+a newer version, the update itself is meant to be all you do.
 
 - **With Docker Compose,** the database version changes only when a
   release changes it, and arrives with the update above.
@@ -86,7 +86,7 @@ A newer PostgreSQL 18 opens your existing data as it is. pgvector's own
 upgrade instructions add one step after its files are updated, a command
 run once inside the database; the gallery runs it for you each time it
 starts, so there is nothing to type. If it could not, the gallery's log
-says so and why, and the gallery keeps working.
+says so and why, and carries on with the version the database has.
 
 The one thing that is not automatic is a move to a new major version,
 PostgreSQL 19. Data written by 18 does not open on 19, so do not change

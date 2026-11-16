@@ -5,10 +5,9 @@ description: Every setting, what it does, and its default.
 
 # Settings
 
-A setting has one name and one default, whichever way you installed.
-With Docker Compose it is a line in `.env` beside `compose.yaml`. After
-changing one, `docker compose up -d` applies it; Compose recreates only
-the containers whose settings changed.
+With Docker Compose a setting is a line in `.env` beside `compose.yaml`.
+After changing one, `docker compose up -d` applies it; Compose recreates
+only the containers whose settings changed.
 
 ## Yours to set
 
