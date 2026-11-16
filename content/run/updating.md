@@ -106,7 +106,8 @@ stops everything and keeps your data.
 docker compose down -v
 ```
 
-also deletes the Docker volumes: the database, the frames and the web
-images. It leaves alone any of those you pointed at folders of your own.
+also deletes the Docker volumes: the database, its daily dumps, the
+frames and the web images. It leaves alone any of those you pointed at
+folders of your own.
 
 Your video is never touched by either.

@@ -66,7 +66,7 @@ docker compose logs --tail 100 gallery
 ```
 
 The services are `gallery`, `worker`, `analyze-cpu` or `analyze-gpu`,
-`text-encoder` and `db`. Each work also keeps its own stage logs beside
+`text-encoder`, `db` and `backup`. Each work also keeps its own stage logs beside
 its frames (`extract.log`, `derive.log` in its folder on the data
 volume).
 
