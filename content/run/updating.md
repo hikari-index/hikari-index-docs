@@ -73,11 +73,13 @@ update it to the same commit and rebuild it as well.
 
 ### The order to update in
 
-With Docker Compose there is nothing to order: `docker compose up -d`
-restarts the parts in the order they need.
+With Docker Compose on one machine there is nothing to order: `docker
+compose up -d` starts the database before the gallery, and waits for the
+gallery before it starts the workers.
 
 If you update containers one at a time (a container template for each
-part, or a worker on another machine), use the same order Compose does:
+part, or a worker on another machine), use this order for a MINOR or
+PATCH release:
 
 1. the database, if you are updating it;
 2. the gallery, which is the part that changes the database's tables and
@@ -85,12 +87,14 @@ part, or a worker on another machine), use the same order Compose does:
 3. the worker that reads your video, the analyze worker and the text
    encoder, in any order. A worker on another machine can come last.
 
-A stage a worker was running when you stopped it goes back to the queue
-and starts again; nothing is lost in the minutes the parts are on
-different versions. Do not leave them that way.
+In a MINOR or PATCH release old and new parts work together while you do
+this; do not leave them on different versions afterwards. A stage a
+worker was running when you stopped it goes back to the queue and starts
+again. A stop counts as one of its three tries, so a stage stopped on
+its third shows on Jobs as "gave up": press **Retry**.
 
-This order is all a MINOR or PATCH release ever asks. If a release needs
-anything more, its notes say so under **Action needed**.
+A MAJOR release can ask for more. Its notes say what, under **Action
+needed**; follow those first.
 
 ## The database
 
