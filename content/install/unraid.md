@@ -66,7 +66,7 @@ or Config folder, change **Gallery** and (under more settings) **Token
 folder** to match.
 
 While it works it uses every core you leave it and about 1 GB of memory,
-for roughly eight minutes an episode on four cores. unRAID's CPU pinning
+for roughly ten to fifteen minutes an episode on four cores. unRAID's CPU pinning
 on the template page is the way to keep it off cores other things need.
 It waits quietly when there is nothing to do.
 
