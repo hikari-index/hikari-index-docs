@@ -86,29 +86,35 @@ two kinds:
 
 - **GPU:** an NVIDIA card and the NVIDIA Container Toolkit (Docker
   Desktop on Windows has it built in through WSL 2).
-- **CPU:** works on any machine, and is slower.
+- **CPU:** works on any machine. How it compares with a GPU depends on
+  the processor; the times below show both.
 
 It never needs your video, so it can also run on
 [a second machine](install/second-machine.md), for example a desktop with
 a GPU while the video lives on a NAS.
 
-How long a 24-minute 1080p episode took on the maintainer's machines:
+How long a 24-minute 1080p episode took on the maintainer's machines.
+The describe and pick times are on 1.3.0 and later; the other two are
+earlier measurements:
 
 | Stage | Time |
 |---|---|
 | Find shots and pull frames | about 4 minutes |
-| Describe and pick, RTX 4070 | about 2.5 minutes on 1.2.0; about 5 on 1.3.0, which runs two more models |
-| Describe and pick, CPU (Core i7-13700K, all 24 threads) | about 4 minutes on 1.2.0; not re-measured on 1.3.0 (on a 4-core machine the camera-angle model alone took about 0.7 seconds a frame) |
+| Describe and pick, GPU: RTX 4070, on a second machine | 5 to 7 minutes |
+| Describe and pick, CPU: Core i5-12400 (6 cores, 2022), in the server itself | about 5 minutes |
+| Describe and pick, CPU: Core i5-8279U (4 cores, 2019), on a second machine | 11 to 15 minutes |
 | Web images | about 2.5 minutes |
 
-And one CPU run held to **4 cores** of the same processor, to get closer to
+And one CPU run held to **4 cores** of a Core i7-13700K, to get closer to
 a NAS: describing and picking Big Buck Bunny (10 minutes of 4K, 129
 candidate frames) took 8 minutes, and the analyze worker's memory peaked
 just under **1 GB**.
 
-These are single measurements on one desktop, not a benchmark. A NAS
-processor with 4 slower cores will take longer; how much longer has not
-been measured.
+These are the maintainer's own machines and shows, not a benchmark, and
+yours will differ. The RTX 4070 and i5-8279U times are where most of 75
+and 59 episodes fell; the i5-12400 time is one episode, the same one the
+GPU took 5 minutes over, and it read its frames from a local disk where
+the other two read them over the network.
 
 ## Shoko: optional, strongly recommended
 

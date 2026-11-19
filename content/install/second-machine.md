@@ -80,7 +80,7 @@ HIKARI_WORKER_TOKENS=analyze:<the token already there>,gpu:<the new token>
   machine is off.
 
 Without one of these, both workers take stages as they come, and some of
-your episodes are described on the slow machine.
+your episodes are described on the main machine.
 
 **4. Apply:**
 
