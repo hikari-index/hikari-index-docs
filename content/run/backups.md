@@ -20,6 +20,42 @@ point at files which are not there. And once you have
 deleted, the tool cannot re-run it: the way back from lost files is to
 remove the work and onboard it again, which loses your review of it.
 
+## The daily database dump
+
+The Compose install and the unRAID container dump the database once a
+day and keep the last fourteen, named by date (`hikari-2026-11-15.dump`,
+the UTC date). With Docker Compose they are in the Docker volume
+`hikari-backups`, or in the folder `HIKARI_BACKUPS` names;
+[on unRAID](../install/unraid.md#backups) they are in `backups/` in the
+Config folder. With Docker Compose the files belong to root and only
+root can read them, so copying them out of a folder of yours takes
+`sudo`; on unRAID they belong to the user the container runs as.
+
+It is there for the day you cull the wrong season or an update goes
+badly, and it is not a backup: it sits on the same disk as the database,
+and it holds the database alone, without the frames and web images the
+database points at. Going back to yesterday's dump loses what you
+reviewed since, and a work added since then is no longer in the database
+while its files are still on disk; remove such a work's folders by hand
+or onboard it again.
+
+To restore one with Docker Compose, stop what writes, load the dump from
+the backup container, and start again:
+
+```bash
+docker compose stop gallery worker analyze-cpu analyze-gpu
+```
+
+```bash
+docker compose exec backup pg_restore -d hikari --no-owner --clean --if-exists --exit-on-error /backups/hikari-2026-11-15.dump
+```
+
+```bash
+docker compose up -d
+```
+
+`docker compose exec backup ls /backups` lists what there is.
+
 ## Configuration to keep
 
 Beside the three stores, keep the few files you wrote yourself, or a note
