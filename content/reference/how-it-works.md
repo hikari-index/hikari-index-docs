@@ -23,9 +23,10 @@ goes further: what is on disk, and worked examples of changing it.
 - **The analyze worker.** It runs the models: tags for what is in a
   frame, faces and heads for how it is framed, a camera-angle classifier,
   an image vector for likeness and mood search, and the picker that
-  chooses the final set. It needs a GPU
-  to be quick and a CPU to be possible. It never sees your video, only
-  the frames the first stage prepared.
+  chooses the final set. It runs on a GPU or on a CPU
+  ([What you need](../requirements.md#somewhere-to-run-the-models) has
+  how long each took). It never sees your video, only the frames the
+  first stage prepared.
 - **The text encoder.** A small service that turns a typed phrase into
   the same kind of vector the frames carry, so "rainy neon street at
   night" finds frames. Without it, tag search still works.
