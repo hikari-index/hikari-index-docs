@@ -71,6 +71,56 @@ docker compose build inference-base
 If you run an analyze worker on [a second machine](../install/second-machine.md),
 update it to the same commit and rebuild it as well.
 
+### The order to update in
+
+With Docker Compose on one machine there is nothing to order: `docker
+compose up -d` starts the database before the gallery, and waits for the
+gallery before it starts the workers.
+
+If you update containers one at a time (a container template for each
+part, or a worker on another machine), use this order for a MINOR or
+PATCH release:
+
+1. the database, if you are updating it;
+2. the gallery, which is the part that changes the database's tables and
+   so goes before anything else that reads them;
+3. the worker that reads your video, the analyze worker and the text
+   encoder, in any order. A worker on another machine can come last.
+
+In a MINOR or PATCH release old and new parts work together while you do
+this; do not leave them on different versions afterwards. A stage a
+worker was running when you stopped it goes back to the queue and starts
+again. A stop counts as one of its three tries, so a stage stopped on
+its third shows on Jobs as "gave up": press **Retry**.
+
+A MAJOR release can ask for more. Its notes say what, under **Action
+needed**; follow those first.
+
+## The database
+
+The database is PostgreSQL 18 with the pgvector add-on. When either gets
+a newer version, the update itself is meant to be all you do.
+
+- **With Docker Compose,** the database version changes only when a
+  release changes it, and arrives with the update above.
+- **With a database container of your own** (for example unRAID's
+  pgvector-18 app), update it when you like, as long as it stays on
+  PostgreSQL 18.
+
+A newer PostgreSQL 18 opens your existing data as it is. pgvector's own
+upgrade instructions add one step after its files are updated, a command
+run once inside the database; the gallery runs it for you each time it
+starts, so there is nothing to type. That is why the database comes
+before the gallery in the order above: update the database container on
+its own and the step waits for the gallery's next start, so restart the
+gallery after it. If the step could not run, the gallery's log
+says so and why, and carries on with the version the database has.
+
+The one thing that is not automatic is a move to a new major version,
+PostgreSQL 19. Data written by 18 does not open on 19, so do not change
+a database container from `pg18` to `pg19` yourself. When the project
+moves, the release notes will say how, under **Action needed**.
+
 ## Stopping and removing
 
 ```bash
@@ -83,7 +133,8 @@ stops everything and keeps your data.
 docker compose down -v
 ```
 
-also deletes the Docker volumes: the database, the frames and the web
-images. It leaves alone any of those you pointed at folders of your own.
+also deletes the Docker volumes: the database, its daily dumps, the
+frames and the web images. It leaves alone any of those you pointed at
+folders of your own.
 
 Your video is never touched by either.

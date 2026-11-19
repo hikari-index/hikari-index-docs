@@ -54,7 +54,8 @@ is not, in words, and it has the buttons that fix most things.
   is no setting to override it. (The Blender film Sintel, as Blender
   publishes it at 720p, is one such file.)
 - **Worker hours seem off by some hours:** `HIKARI_WORKER_HOURS` is read
-  on the container's clock, which is UTC.
+  in UTC unless `HIKARI_TZ` names your time zone
+  ([Settings](../reference/settings.md)).
 
 ## Logs
 
@@ -65,7 +66,7 @@ docker compose logs --tail 100 gallery
 ```
 
 The services are `gallery`, `worker`, `analyze-cpu` or `analyze-gpu`,
-`text-encoder` and `db`. Each work also keeps its own stage logs beside
+`text-encoder`, `db` and `backup`. Each work also keeps its own stage logs beside
 its frames (`extract.log`, `derive.log` in its folder on the data
 volume).
 

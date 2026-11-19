@@ -97,9 +97,11 @@ writes `>>` output as UTF-16, which Compose cannot read.
 docker compose up -d
 ```
 
-This starts five containers: the gallery, its database, the worker that
-reads video, the analyze worker you picked, and the text encoder that
-makes mood search work. The encoder needs no settings.
+This starts six containers: the gallery, its database, the worker that
+reads video, the analyze worker you picked, the text encoder that makes
+mood search work, and a small one that dumps the database once a day
+([Backups](../run/backups.md#the-daily-database-dump)). The encoder and
+the dump need no settings.
 
 Open the gallery at the address you set in `HIKARI_ORIGIN`. The pages
 are empty until you add something.
